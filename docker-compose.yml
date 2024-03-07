@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  main:
+    container_name: "${APP_NAME}-main"
+    build: 
+      context: .docker/php
+      dockerfile: Dockerfile
+      args:
+        # Enabling Docker Buildkit
+        DOCKER_BUILDKIT: 1
+    environment:
+      - COMPOSER_MEMORY_LIMIT=2G
+      - TZ=${APP_TIMEZONE}
+    volumes:
+      # Allows changes made in the project directory to be accessed by the container and persist
+      - .:/var/www
+    networks:
+      - laravel10-falemais-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  nginx:
+    container_name: "${APP_NAME}-nginx"
+    build: .docker/nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - ${APP_PORT_EXTERNAL}:${APP_PORT}
+    environment:
+      - TZ=${APP_TIMEZONE}
+    volumes:
+      - .:/var/www
+    networks:
+      - laravel10-falemais-network
+    depends_on:
+      - main
+
+  mysql:
+    container_name: "${APP_NAME}-mysql"
+    build: .docker/mysql
+    platform: linux/amd64
+    restart: unless-stopped
+    tty: true
+    ports:
+      - ${DB_PORT_EXTERNAL}:${DB_PORT}
+    volumes:
+      - ./.docker/mysql/dbdata:/var/lib/mysql
+      - ./.docker/mysql/scripts:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+    networks:
+      - laravel10-falemais-network
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+
+networks:
+  laravel10-falemais-network:
+    driver: bridge
