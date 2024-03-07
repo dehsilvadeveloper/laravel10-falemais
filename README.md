@@ -6,7 +6,7 @@
 [![Docker][docker-shield]][ref-docker]
 [![Git][git-shield]][ref-git]
 
-# FaleMais (Laravel 10 version)
+# Challenge FaleMais (Laravel 10 version)
 
 ## Challenge description
 
@@ -38,6 +38,15 @@ Example of values:
 
 The objective of the challenge is to provide an API that allows the simulation of call values following the proposed rules.
 
+The following points must be taken into consideration during development:
+
+- Use of framework *features*
+- Object orientation
+- Application architecture/internal design
+- Tests
+- Code clarity and organization
+- API must be easy to use
+
 The monetary values present in the example tables are in *Real*, the current currency of Brazil.
 
 *DDD* means *Direct Distance Dialing* and is an automatic telephone call system between different urban areas in Brazil through the insertion of prefixes, always with 3 digits.
@@ -68,7 +77,16 @@ Exemplo de valores:
 | 018 | 011 | 200 | FaleMais 120 | R$ 167,20 | R$ 380,00 |
 | 018 | 017 | 100 | FaleMais 30 | - | - |
 
-O objetivo do desafio é disponibilizar um API que permita a simulação de valores da ligação seguindo as regras propostas.
+O objetivo do desafio é disponibilizar uma API que permita a simulação de valores da ligação seguindo as regras propostas.
+
+Os seguintes pontos devem ser levados em consideração durante o desenvolvimento:
+
+- Uso de *features* do framework
+- Orientação a objeto
+- Arquitetura/Design interno da aplicação
+- Testes
+- Clareza e organização do código
+- Facilidade de uso da API
 
 Os valores monetários presentes nas tabelas de exemplo estão em *Real*, a moeda atual do Brasil.
 
