@@ -10,8 +10,7 @@ class BaseRepositoryEloquent implements RepositoryEloquentInterface
 {
     public function __construct(
         protected Model $model
-    )
-    {
+    ) {
     }
 
     public function create(array $payload): ?Model

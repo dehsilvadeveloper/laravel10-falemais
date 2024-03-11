@@ -1,0 +1,59 @@
+########################################
+#
+#  GLOBAL VARIABLES
+#
+########################################
+
+@baseUrl=http://localhost:{{$dotenv APP_PORT_EXTERNAL}}/api
+@accept=application/json
+@contentType=application/json
+
+########################################
+#
+#  AUTHORIZATION
+#
+########################################
+
+### Login / Access Token Generation
+# @name authLogin
+
+POST {{baseUrl}}/auth/login
+Accept: {{accept}}
+Content-Type: {{contentType}}
+
+{
+    "email": "default@app.com",
+    "password": "defaultpassword"
+}
+
+### Access Token Definition
+
+@accessToken={{authLogin.response.body.accessToken}}
+
+### Get Authenticated User Data
+# @name authMe
+
+GET {{baseUrl}}/auth/me
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+########################################
+#
+#  PLAN
+#
+########################################
+
+### Get List Of Plans
+
+GET {{baseUrl}}/plans
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+### TEST
+
+GET {{baseUrl}}/test
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
