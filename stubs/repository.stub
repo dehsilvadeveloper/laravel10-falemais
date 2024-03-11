@@ -1,0 +1,13 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Infrastructure\Database\Eloquent\BaseRepositoryEloquent;
+
+class {{class}} extends BaseRepositoryEloquent
+{
+    public function __construct()
+    {
+        // Build your repository class
+    }
+}
