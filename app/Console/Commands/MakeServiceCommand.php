@@ -25,7 +25,7 @@ class MakeServiceCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new service class.';
+    protected $description = 'Create a new service class';
 
     /**
      * The type of class being generated.
