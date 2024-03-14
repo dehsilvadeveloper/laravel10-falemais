@@ -4,9 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Plan>
- */
 class PlanFactory extends Factory
 {
     /**
@@ -17,7 +14,8 @@ class PlanFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->word(),
+            'max_free_minutes' => $this->faker->randomNumber(2)
         ];
     }
 }
