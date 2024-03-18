@@ -70,6 +70,14 @@ docker-compose exec main php artisan migrate
 docker-compose exec main php artisan db:seed
 ```
 
+With this all the required data will be in the database.
+
+If you, for some reason, has the need to run a specific seeder class, you can use the **--class** informing the name of the class.
+
+```
+docker-compose exec main php artisan db:seed --class=GenericSeeder
+```
+
 **Installation finished**
 
 After following the installation steps, the application is ready to use on the following url:
