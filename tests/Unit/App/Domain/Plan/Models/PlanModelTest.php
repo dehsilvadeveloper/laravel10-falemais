@@ -4,13 +4,10 @@ namespace Tests\Unit\App\Domain\Plan\Models;
 
 use Tests\ModelTestCase;
 use Tests\TestsHelpers\DataTransferObjects\ModelConfigurationAssertionParamsDto;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Domain\Plan\Models\Plan;
 
 class PlanModelTest extends ModelTestCase
 {
-    use RefreshDatabase;
-
     /**
      * @group plan
      */

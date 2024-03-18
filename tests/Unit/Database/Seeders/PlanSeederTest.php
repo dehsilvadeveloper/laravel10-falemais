@@ -3,13 +3,10 @@
 namespace Tests\Unit\Database\Seeders;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Database\Seeders\PlanSeeder;
 
 class PlanSeederTest extends TestCase
 {
-    use RefreshDatabase;
-
     /**
      * @group seeders
      * @group plan
