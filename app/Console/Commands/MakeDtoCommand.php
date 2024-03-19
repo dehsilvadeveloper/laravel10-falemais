@@ -25,7 +25,7 @@ class MakeDtoCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new DTO class.';
+    protected $description = 'Create a new DTO class';
 
     /**
      * The type of class being generated.

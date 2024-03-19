@@ -80,6 +80,6 @@ class BaseRepositoryEloquent implements RepositoryEloquentInterface
 
     public function firstByField(string $field, mixed $value, array $columns = ['*'], array $relations = []): ?Model
     {
-        return $this->model->select($columns)->with($relations)->where($field, '=', $value);
+        return $this->model->select($columns)->with($relations)->where($field, '=', $value)->first();
     }
 }

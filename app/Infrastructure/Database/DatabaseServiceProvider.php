@@ -5,6 +5,8 @@ namespace App\Infrastructure\Database;
 use Illuminate\Support\ServiceProvider;
 use App\Infrastructure\Database\Eloquent\BaseRepositoryEloquent;
 use App\Infrastructure\Database\Eloquent\Interfaces\RepositoryEloquentInterface;
+use App\Infrastructure\Database\Eloquent\PlanRepositoryEloquent;
+use App\Domain\Plan\Repositories\PlanRepositoryInterface;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class DatabaseServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->bindBaseRepositoryClasses();
+        $this->bindPlanRepositoryClasses();
     }
 
     /**
@@ -35,5 +38,15 @@ class DatabaseServiceProvider extends ServiceProvider
     private function bindBaseRepositoryClasses(): void
     {
         $this->app->bind(RepositoryEloquentInterface::class, BaseRepositoryEloquent::class);
+    }
+
+    /**
+     * Bind repository classes for domain Plan
+     * 
+     * @return void
+     */
+    private function bindPlanRepositoryClasses(): void
+    {
+        $this->app->bind(PlanRepositoryInterface::class, PlanRepositoryEloquent::class);
     }
 }
