@@ -40,6 +40,19 @@ Authorization: Bearer {{accessToken}}
 
 ########################################
 #
+#  FARE
+#
+########################################
+
+### Get List Of Fares
+
+GET {{baseUrl}}/fares
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+########################################
+#
 #  PLAN
 #
 ########################################
