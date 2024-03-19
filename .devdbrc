@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Laravel 10 FaleMais Database",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3398,
+    "username": "root",
+    "password": "root",
+    "database": "falemais"
+  }
+]
