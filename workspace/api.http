@@ -50,10 +50,3 @@ GET {{baseUrl}}/plans
 Accept: {{accept}}
 Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
-
-### TEST
-
-GET {{baseUrl}}/test
-Accept: {{accept}}
-Content-Type: {{contentType}}
-Authorization: Bearer {{accessToken}}

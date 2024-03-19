@@ -36,12 +36,10 @@ class PlanServiceTest extends TestCase
         $generatedRecords = Plan::factory()->count($recordsCount)->make();
         $generatedRecordsAsArray = $generatedRecords->toArray();
 
-        $expectedData = new Collection($generatedRecordsAsArray);
-
         $this->repositoryMock
             ->shouldReceive('getAll')
             ->once()
-            ->andReturn($expectedData);
+            ->andReturn($generatedRecords);
 
         $records = $this->service->getAll();
         $recordsAsArray = $records->toArray();
@@ -78,7 +76,7 @@ class PlanServiceTest extends TestCase
      * @group services
      * @group plan
      */
-    public function test_generates_log_in_case_of_exception(): void
+    public function test_generates_log_if_cannot_get_list(): void
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Houston, we have a problem.');
