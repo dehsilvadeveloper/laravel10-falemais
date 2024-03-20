@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Support\Number;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,7 +13,7 @@ class FareResource extends JsonResource
             'id' => $this->id,
             'ddd_origin' => $this->ddd_origin,
             'ddd_destination' => $this->ddd_destination,
-            'price_per_minute' => Number::format($this->price_per_minute, 2)
+            'price_per_minute' => $this->price_per_minute
         ];
     }
 }
