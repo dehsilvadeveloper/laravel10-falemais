@@ -19,6 +19,9 @@ class Fare extends Model
         'price_per_minute'
     ];
     protected $dateFormat = 'Y-m-d H:i:s';
+    protected $casts = [
+        'price_per_minute' => 'float'
+    ];
 
     /**
      * Create a new factory instance for the model.
