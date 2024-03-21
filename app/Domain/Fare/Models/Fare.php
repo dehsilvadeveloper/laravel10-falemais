@@ -1,29 +1,33 @@
 <?php
 
-namespace App\Domain\Plan\Models;
+namespace App\Domain\Fare\Models;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Database\Factories\PlanFactory;
+use Database\Factories\FareFactory;
 
-class Plan extends Model
+class Fare extends Model
 {
     use HasFactory;
 
-    protected $table = 'plans';
+    protected $table = 'fares';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name',
-        'max_free_minutes'
+        'ddd_origin',
+        'ddd_destination',
+        'price_per_minute'
     ];
     protected $dateFormat = 'Y-m-d H:i:s';
+    protected $casts = [
+        'price_per_minute' => 'float'
+    ];
 
     /**
      * Create a new factory instance for the model.
      */
     protected static function newFactory(): Factory
     {
-        return PlanFactory::new();
+        return FareFactory::new();
     }
 }
