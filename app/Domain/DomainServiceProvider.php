@@ -4,6 +4,7 @@ namespace App\Domain;
 
 use Illuminate\Support\ServiceProvider;
 use App\Domain\Plan\Providers\PlanServiceProvider;
+use App\Domain\Fare\Providers\FareServiceProvider;
 
 class DomainServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class DomainServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(PlanServiceProvider::class);
+        $this->app->register(FareServiceProvider::class);
     }
 
     /**
