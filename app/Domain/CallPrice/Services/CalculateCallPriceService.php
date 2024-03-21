@@ -5,8 +5,9 @@ namespace App\Domain\CallPrice\Services;
 use Illuminate\Http\Response;
 use App\Domain\CallPrice\DataTransferObjects\CallPriceCalculationDto;
 use App\Domain\CallPrice\Exceptions\InvalidPlanMaxFreeMinutesException;
+use App\Domain\CallPrice\Services\Interfaces\CalculateCallPriceServiceInterface;
 
-class CalculateCallPriceService
+class CalculateCallPriceService implements CalculateCallPriceServiceInterface
 {
     public function calculateWithPlan(CallPriceCalculationDto $dto): float
     {
