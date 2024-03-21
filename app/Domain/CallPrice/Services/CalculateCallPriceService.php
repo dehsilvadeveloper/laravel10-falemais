@@ -4,6 +4,7 @@ namespace App\Domain\CallPrice\Services;
 
 use Illuminate\Http\Response;
 use App\Domain\CallPrice\DataTransferObjects\CallPriceCalculationDto;
+use App\Domain\CallPrice\Exceptions\InvalidPlanMaxFreeMinutesException;
 
 class CalculateCallPriceService
 {
@@ -13,7 +14,7 @@ class CalculateCallPriceService
         list($callMinutes, $exceedingFeePercentage, $farePricePerMinute, $planMaxFreeMinutes) = $dataArray;
 
         if (!$planMaxFreeMinutes) {
-            throw new \Exception(
+            throw new InvalidPlanMaxFreeMinutesException(
                 'Cannot proceed the calculation without a valid value for plan max free minutes.',
                 Response::HTTP_BAD_REQUEST
             );
