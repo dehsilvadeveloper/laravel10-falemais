@@ -12,9 +12,12 @@ class CallPriceCalculationDto extends Data
 {
     public function __construct(
         public int $callMinutes,
-        public float $exceedingFeePercentage,
+        public float $exceedingFeePercentage = 0,
         public float $farePricePerMinute,
         public ?int $planMaxFreeMinutes = null
     ) {
+        if (!$exceedingFeePercentage) {
+            $this->exceedingFeePercentage = config('callprice.configuration.exceeding_fee_percentage');
+        }
     }
 }
