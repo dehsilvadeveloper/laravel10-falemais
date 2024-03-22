@@ -6,8 +6,9 @@ use Throwable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use App\Domain\Simulation\Services\Interfaces\SimulateCallPriceServiceInterface;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\SimulateCallPriceRequest;
 use App\Traits\Http\ApiResponses;
 
 class CallPriceSimulationController extends Controller
@@ -18,10 +19,12 @@ class CallPriceSimulationController extends Controller
     {
     }
 
-    public function simulate(): JsonResponse
+    public function simulate(SimulateCallPriceRequest $request): JsonResponse
     {
         try {
-            $result = $this->simulateCallPriceService->simulate();
+            $dto = CallPriceSimulationDto::from(...$request->validated());
+
+            $result = $this->simulateCallPriceService->simulate($dto);
 
             return $this->sendSuccessResponse(
                 data: $result->toArray(),
