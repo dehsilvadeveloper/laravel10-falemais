@@ -12,7 +12,7 @@ class CallPriceCalculationDto extends Data
 {
     public function __construct(
         public int $callMinutes,
-        public float $exceedingFeePercentage = 0,
+        public ?float $exceedingFeePercentage = null,
         public float $farePricePerMinute,
         public ?int $planMaxFreeMinutes = null
     ) {
