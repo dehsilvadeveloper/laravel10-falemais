@@ -3,9 +3,12 @@
 namespace Tests\TestsHelpers\DataTransferObjects;
 
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\MapInputName;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
+#[MapInputName(SnakeCaseMapper::class)]
 class ModelConfigurationAssertionParamsDto extends Data
 {
     public function __construct(
