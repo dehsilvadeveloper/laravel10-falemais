@@ -63,3 +63,16 @@ GET {{baseUrl}}/plans
 Accept: {{accept}}
 Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
+
+########################################
+#
+#  CALL PRICE
+#
+########################################
+
+### Simulate call price
+
+GET {{baseUrl}}/call-prices/simulate
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
