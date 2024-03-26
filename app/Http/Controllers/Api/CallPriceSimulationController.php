@@ -6,6 +6,8 @@ use Throwable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
+use App\Domain\Common\ValueObjects\DddObject;
+use App\Domain\Simulation\DataTransferObjects\CallPriceSimulationDto;
 use App\Domain\Simulation\Services\Interfaces\SimulateCallPriceServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\SimulateCallPriceRequest;
@@ -22,7 +24,12 @@ class CallPriceSimulationController extends Controller
     public function simulate(SimulateCallPriceRequest $request): JsonResponse
     {
         try {
-            $dto = CallPriceSimulationDto::from(...$request->validated());
+            $dto = CallPriceSimulationDto::from([
+                'ddd_origin' => new DddObject($request->input('ddd_origin')),
+                'ddd_destination' => new DddObject($request->input('ddd_destination')),
+                'call_minutes' => $request->input('call_minutes'),
+                'plan_id' => $request->input('plan_id'),
+            ]);
 
             $result = $this->simulateCallPriceService->simulate($dto);
 
