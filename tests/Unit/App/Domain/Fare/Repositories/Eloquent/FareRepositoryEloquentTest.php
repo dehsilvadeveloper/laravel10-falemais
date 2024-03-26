@@ -244,4 +244,40 @@ class FareRepositoryEloquentTest extends TestCase
 
         $this->assertNull($foundRecord);
     }
+
+    /**
+     * @group repositories
+     * @group fare
+     */
+    public function test_can_find_where(): void
+    {
+        $existingRecord = Fare::factory()->create([
+            'ddd_origin' => '011',
+            'ddd_destination' => '018'
+        ]);
+
+        $foundRecord = $this->repository->firstWhere([
+            'ddd_origin' => '011',
+            'ddd_destination' => '018'
+        ]);
+
+        $this->assertInstanceOf(Fare::class, $foundRecord);
+        $this->assertEquals($existingRecord->ddd_origin, $foundRecord->ddd_origin);
+        $this->assertEquals($existingRecord->ddd_destination, $foundRecord->ddd_destination);
+        $this->assertEquals($existingRecord->price_per_minute, $foundRecord->price_per_minute);
+    }
+
+    /**
+     * @group repositories
+     * @group fare
+     */
+    public function test_cannot_find_where_a_nonexistent_record(): void
+    {
+        $foundRecord = $this->repository->firstWhere([
+            'ddd_origin' => '998',
+            'ddd_destination' => '999'
+        ]);
+
+        $this->assertNull($foundRecord);
+    }
 }

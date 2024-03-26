@@ -82,4 +82,9 @@ class BaseRepositoryEloquent implements RepositoryEloquentInterface
     {
         return $this->model->select($columns)->with($relations)->where($field, '=', $value)->first();
     }
+
+    public function firstWhere(array $where, array $columns = ['*'], array $relations = []): ?Model
+    {
+        return $this->model->select($columns)->with($relations)->where($where)->first();
+    }
 }

@@ -234,4 +234,39 @@ class PlanRepositoryEloquentTest extends TestCase
 
         $this->assertNull($foundRecord);
     }
+
+    /**
+     * @group repositories
+     * @group plan
+     */
+    public function test_can_find_where(): void
+    {
+        $existingRecord = Plan::factory()->create([
+            'name' => 'Special',
+            'max_free_minutes' => 5
+        ]);
+
+        $foundRecord = $this->repository->firstWhere([
+            'name' => 'Special',
+            'max_free_minutes' => 5
+        ]);
+
+        $this->assertInstanceOf(Plan::class, $foundRecord);
+        $this->assertEquals($existingRecord->name, $foundRecord->name);
+        $this->assertEquals($existingRecord->max_free_minutes, $foundRecord->max_free_minutes);
+    }
+
+    /**
+     * @group repositories
+     * @group plan
+     */
+    public function test_cannot_find_where_a_nonexistent_record(): void
+    {
+        $foundRecord = $this->repository->firstWhere([
+            'name' => 'Special',
+            'max_free_minutes' => 999
+        ]);
+
+        $this->assertNull($foundRecord);
+    }
 }
