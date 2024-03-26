@@ -11,7 +11,7 @@ class SimulateCallPriceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class SimulateCallPriceRequest extends FormRequest
             'ddd_origin' => ['required', 'string', 'min:3', 'max:3'],
             'ddd_destination' => ['required', 'string', 'min:3', 'max:3'],
             'call_minutes' => ['required', 'integer', 'gt:0'],
-            'plan_id' => ['required', 'integer', 'gt:0', 'exists:plans, id']
+            'plan_id' => ['required', 'integer', 'gt:0', 'exists:plans,id']
         ];
     }
 }
