@@ -30,4 +30,6 @@ interface RepositoryEloquentInterface
     public function firstOnlyTrashedById(int $modelId): ?Model;
 
     public function firstByField(string $field, mixed $value, array $columns = ['*'], array $relations = []): ?Model;
+
+    public function firstWhere(array $where, array $columns = ['*'], array $relations = []): ?Model;
 }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PlanController;
 use App\Http\Controllers\Api\FareController;
+use App\Http\Controllers\Api\CallPriceSimulationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,8 @@ Route::prefix('plans')->group(function () {
 
 Route::prefix('fares')->group(function () {
     Route::get('/', [FareController::class, 'getAll'])->name('fare::list');
+});
+
+Route::prefix('call-prices')->group(function () {
+    Route::post('/simulate', [CallPriceSimulationController::class, 'simulate'])->name('call-price::simulate');
 });

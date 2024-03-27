@@ -29,12 +29,12 @@ class FareController extends Controller
                 ->setStatusCode(Response::HTTP_OK);
         } catch (Throwable $exception) {
             Log::error(
-                'Failed to get list of fares.',
+                '[FareController] Failed to get list of fares.',
                 [
-                    'message' => $exception->getMessage(),
+                    'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
-                    'trace' => $exception->getTrace()
+                    'stack_trace' => $exception->getTrace()
                 ]
             );
             
