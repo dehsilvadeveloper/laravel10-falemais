@@ -76,7 +76,7 @@ class PlanServiceTest extends TestCase
      * @group services
      * @group plan
      */
-    public function test_generates_log_if_cannot_get_list(): void
+    public function test_generates_log_if_exception_occurs_when_try_get_list(): void
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Houston, we have a problem.');
@@ -93,5 +93,50 @@ class PlanServiceTest extends TestCase
             ->andThrows(new Exception('Houston, we have a problem.'));
 
         $this->service->getAll();
+    }
+
+    /**
+     * @group services
+     * @group plan
+     */
+    public function test_can_find_record_by_id(): void
+    {
+        $generatedRecord = Plan::factory()->make();
+        $generatedRecord->id = 1;
+        
+        $this->repositoryMock
+            ->shouldReceive('firstById')
+            ->once()
+            ->with($generatedRecord->id)
+            ->andReturn($generatedRecord);
+
+        $foundRecord = $this->service->firstById($generatedRecord->id);
+
+        $this->assertInstanceOf(Plan::class, $foundRecord);
+        $this->assertEquals($generatedRecord->name, $foundRecord->name);
+        $this->assertEquals($generatedRecord->max_free_minutes, $foundRecord->max_free_minutes);
+    }
+
+    /**
+     * @group services
+     * @group plan
+     */
+    public function test_generates_log_if_exception_occurs_when_try_find_record_by_id(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Houston, we have a problem.');
+
+        Log::shouldReceive('error')
+            ->withArgs(function ($message, $context) {
+                return strpos($message, '[PlanService] Failed to find a plan with the id provided.') !== false
+                    && strpos($context['error_message'], 'Houston, we have a problem.') !== false;
+            });
+
+        $this->repositoryMock
+            ->shouldReceive('firstById')
+            ->once()
+            ->andThrows(new Exception('Houston, we have a problem.'));
+
+        $this->service->firstById(1);
     }
 }

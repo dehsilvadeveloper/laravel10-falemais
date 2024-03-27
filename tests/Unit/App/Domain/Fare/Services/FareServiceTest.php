@@ -130,7 +130,7 @@ class FareServiceTest extends TestCase
      * @group services
      * @group fare
      */
-    public function test_generates_log_if_exception_occurs_when_try_find_record(): void
+    public function test_generates_log_if_exception_occurs_when_try_find_record_by_conditions(): void
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Houston, we have a problem.');
