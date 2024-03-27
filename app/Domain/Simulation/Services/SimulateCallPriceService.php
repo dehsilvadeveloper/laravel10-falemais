@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Log;
 use App\Domain\CallPrice\DataTransferObjects\CallPriceCalculationDto;
 use App\Domain\CallPrice\Services\Interfaces\CalculateCallPriceServiceInterface;
 use App\Domain\Common\ValueObjects\DddObject;
+use App\Domain\Fare\Exceptions\FareNotFoundException;
 use App\Domain\Fare\Models\Fare;
 use App\Domain\Fare\Services\Interfaces\FareServiceInterface;
+use App\Domain\Plan\Exceptions\PlanNotFoundException;
 use App\Domain\Plan\Models\Plan;
 use App\Domain\Plan\Services\Interfaces\PlanServiceInterface;
 use App\Domain\Simulation\DataTransferObjects\CallPriceSimulationDto;
@@ -61,7 +63,7 @@ class SimulateCallPriceService implements SimulateCallPriceServiceInterface
         ]);
 
         if (!$fare) {
-            throw new \Exception(
+            throw new FareNotFoundException(
                 'Cannot proceed. Could no find a fare with the ddd origin and ddd destination provided.',
                 Response::HTTP_BAD_REQUEST
             );
@@ -75,7 +77,7 @@ class SimulateCallPriceService implements SimulateCallPriceServiceInterface
         $plan = $this->planService->firstById($planId);
 
         if (!$plan) {
-            throw new \Exception(
+            throw new PlanNotFoundException(
                 'Cannot proceed. Could no find a plan with the id provided.',
                 Response::HTTP_BAD_REQUEST
             );

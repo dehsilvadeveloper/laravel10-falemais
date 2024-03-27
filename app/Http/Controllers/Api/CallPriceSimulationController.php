@@ -28,7 +28,7 @@ class CallPriceSimulationController extends Controller
                 'ddd_origin' => new DddObject($request->input('ddd_origin')),
                 'ddd_destination' => new DddObject($request->input('ddd_destination')),
                 'call_minutes' => $request->input('call_minutes'),
-                'plan_id' => $request->input('plan_id'),
+                'plan_id' => $request->input('plan_id')
             ]);
 
             $result = $this->simulateCallPriceService->simulate($dto);
