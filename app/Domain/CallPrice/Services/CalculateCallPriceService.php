@@ -31,8 +31,9 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
 
             $realCallMinutes = $callMinutes - $planMaxFreeMinutes;
             $realPricePerMinute = (($exceedingFeePercentage / 100) * $farePricePerMinute) + $farePricePerMinute;
+            $result = $realCallMinutes * $realPricePerMinute;
 
-            return $realCallMinutes * $realPricePerMinute;
+            return ($result > 0) ? $result : 0;
         } catch (Throwable $exception) {
             Log::error(
                 '[CalculateCallPriceService] Failed to calculate call price with plan.',

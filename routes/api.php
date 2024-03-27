@@ -30,5 +30,5 @@ Route::prefix('fares')->group(function () {
 });
 
 Route::prefix('call-prices')->group(function () {
-    Route::get('/simulate', [CallPriceSimulationController::class, 'simulate'])->name('call-price::simulate');
+    Route::post('/simulate', [CallPriceSimulationController::class, 'simulate'])->name('call-price::simulate');
 });
