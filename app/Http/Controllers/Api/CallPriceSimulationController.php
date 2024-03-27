@@ -39,12 +39,12 @@ class CallPriceSimulationController extends Controller
             );
         } catch (Throwable $exception) {
             Log::error(
-                'Failed to simulate the call price.',
+                '[CallPriceSimulationController] Failed to simulate the call price.',
                 [
-                    'message' => $exception->getMessage(),
+                    'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
-                    'trace' => $exception->getTrace()
+                    'stack_trace' => $exception->getTrace()
                 ]
             );
             

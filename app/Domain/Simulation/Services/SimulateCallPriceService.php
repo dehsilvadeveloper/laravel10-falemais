@@ -26,12 +26,12 @@ class SimulateCallPriceService implements SimulateCallPriceServiceInterface
             $this->verifyPlanExists($dto->planId);
         } catch (Throwable $exception) {
             Log::error(
-                'Failed to simulate the calculation of the call price.',
+                '[SimulateCallPriceService] Failed to simulate the calculation of the call price.',
                 [
-                    'message' => $exception->getMessage(),
+                    'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
-                    'trace' => $exception->getTrace()
+                    'stack_trace' => $exception->getTrace()
                 ]
             );
 

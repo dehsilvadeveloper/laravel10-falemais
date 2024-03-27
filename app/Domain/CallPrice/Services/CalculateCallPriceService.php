@@ -35,9 +35,9 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
             return $realCallMinutes * $realPricePerMinute;
         } catch (Throwable $exception) {
             Log::error(
-                'Failed to calculate call price with plan.',
+                '[CalculateCallPriceService] Failed to calculate call price with plan.',
                 [
-                    'message' => $exception->getMessage(),
+                    'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
                     'data' => [
@@ -46,7 +46,7 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
                         'fare_price_per_minute' => $farePricePerMinute ?? null,
                         'plan_max_free_minutes' => $planMaxFreeMinutes ?? null
                     ],
-                    'trace' => $exception->getTrace()
+                    'stack_trace' => $exception->getTrace()
                 ]
             );
 
@@ -63,16 +63,16 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
             return $callMinutes * $farePricePerMinute;
         } catch (Throwable $exception) {
             Log::error(
-                'Failed to calculate call price without plan.',
+                '[CalculateCallPriceService] Failed to calculate call price without plan.',
                 [
-                    'message' => $exception->getMessage(),
+                    'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
                     'data' => [
                         'call_minutes'=> $callMinutes ?? null,
                         'fare_price_per_minute' => $farePricePerMinute ?? null
                     ],
-                    'trace' => $exception->getTrace()
+                    'stack_trace' => $exception->getTrace()
                 ]
             );
 

@@ -80,15 +80,15 @@ class FareServiceTest extends TestCase
      * @group services
      * @group fare
      */
-    public function test_generates_log_if_cannot_get_list(): void
+    public function test_generates_log_if_exception_occurs_when_try_get_list(): void
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Houston, we have a problem.');
 
         Log::shouldReceive('error')
             ->withArgs(function ($message, $context) {
-                return strpos($message, 'Failed to get list of fares.') !== false
-                    && strpos($context['message'], 'Houston, we have a problem.') !== false;
+                return strpos($message, '[FareService] Failed to get list of fares.') !== false
+                    && strpos($context['error_message'], 'Houston, we have a problem.') !== false;
             });
 
         $this->repositoryMock
@@ -97,5 +97,58 @@ class FareServiceTest extends TestCase
             ->andThrows(new Exception('Houston, we have a problem.'));
 
         $this->service->getAll();
+    }
+
+    /**
+     * @group services
+     * @group fare
+     */
+    public function test_can_find_record_by_conditions(): void
+    {
+        $generatedRecord = Fare::factory()->make([
+            'ddd_origin' => '011',
+            'ddd_destination' => '017'
+        ]);
+
+        $this->repositoryMock
+            ->shouldReceive('firstWhere')
+            ->once()
+            ->andReturn($generatedRecord);
+
+        $foundRecord = $this->service->firstWhere([
+            'ddd_origin' => '011',
+            'ddd_destination' => '017'
+        ]);
+
+        $this->assertInstanceOf(Fare::class, $foundRecord);
+        $this->assertEquals($generatedRecord->ddd_origin, $foundRecord->ddd_origin);
+        $this->assertEquals($generatedRecord->ddd_destination, $foundRecord->ddd_destination);
+        $this->assertEquals($generatedRecord->price_per_minute, $foundRecord->price_per_minute);
+    }
+
+    /**
+     * @group services
+     * @group fare
+     */
+    public function test_generates_log_if_exception_occurs_when_try_find_record(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Houston, we have a problem.');
+
+        Log::shouldReceive('error')
+            ->withArgs(function ($message, $context) {
+                return strpos($message, '[FareService] Failed to find a fare with the attributes provided.') !== false
+                    && strpos($context['error_message'], 'Houston, we have a problem.') !== false;
+            });
+
+        $this->repositoryMock
+            ->shouldReceive('firstWhere')
+            ->once()
+            ->andThrows(new Exception('Houston, we have a problem.'));
+
+        $this->service->firstWhere([
+            'ddd_origin' => '011',
+            'ddd_destination' => '017'
+        ]);
     }
 }
