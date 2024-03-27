@@ -86,8 +86,8 @@ class PlanControllerTest extends TestCase
 
         Log::shouldReceive('error')
             ->withArgs(function ($message, $context) {
-                return strpos($message, 'Failed to get list of plans.') !== false
-                    && strpos($context['message'], 'Houston, we have a problem.') !== false;
+                return strpos($message, '[PlanController] Failed to get list of plans.') !== false
+                    && strpos($context['error_message'], 'Houston, we have a problem.') !== false;
             });
 
         $this->serviceMock

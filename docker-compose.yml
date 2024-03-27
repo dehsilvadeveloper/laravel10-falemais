@@ -5,7 +5,7 @@ services:
     container_name: "${APP_NAME}-main"
     build: 
       context: .docker/php
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.alpine
       args:
         # Enabling Docker Buildkit
         DOCKER_BUILDKIT: 1

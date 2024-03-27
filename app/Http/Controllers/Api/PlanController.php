@@ -29,12 +29,12 @@ class PlanController extends Controller
                 ->setStatusCode(Response::HTTP_OK);
         } catch (Throwable $exception) {
             Log::error(
-                'Failed to get list of plans.',
+                '[PlanController] Failed to get list of plans.',
                 [
-                    'message' => $exception->getMessage(),
+                    'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
-                    'trace' => $exception->getTrace()
+                    'stack_trace' => $exception->getTrace()
                 ]
             );
             

@@ -63,3 +63,51 @@ GET {{baseUrl}}/plans
 Accept: {{accept}}
 Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
+
+########################################
+#
+#  CALL PRICE
+#
+########################################
+
+### Simulate call price
+
+POST {{baseUrl}}/call-prices/simulate
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+    "ddd_origin": "011",
+    "ddd_destination": "016",
+    "call_minutes": 20,
+    "plan_id": 1
+}
+
+### Simulate call price
+
+POST {{baseUrl}}/call-prices/simulate
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+    "ddd_origin": "011",
+    "ddd_destination": "017",
+    "call_minutes": 80,
+    "plan_id": 2
+}
+
+### Simulate call price
+
+POST {{baseUrl}}/call-prices/simulate
+Accept: {{accept}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+    "ddd_origin": "018",
+    "ddd_destination": "011",
+    "call_minutes": 200,
+    "plan_id": 3
+}
