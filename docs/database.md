@@ -29,7 +29,7 @@ USE falemais; SHOW TABLES;
 To connect to the dockerized MYSQL database using programs like **Mysql Workbench**, you can use the following information.
 
 ```
-hostname: localhost
+hostname: mysql
 port: 3398
 username: root
 password: root

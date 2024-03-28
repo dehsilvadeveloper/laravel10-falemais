@@ -2,7 +2,7 @@
 
 ### Application requirements
 
-To be able to install and use the application, your machine has to have **Docker** installed.
+To be able to install and use the application, your machine must have **Docker** installed.
 
 ### Installing the application
 
@@ -112,6 +112,6 @@ This script will get down all Docker containers and the application will not be 
 
 ### Using the API
 
-With the application ready for use, you can refer to the following documentation to get more information about how to test the API:
+With the application ready, you can refer to the following documentation to get more information about how to use the API:
 
 [Using the API](./docs/using_api.md)

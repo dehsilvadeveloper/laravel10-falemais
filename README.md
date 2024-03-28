@@ -8,6 +8,8 @@
 
 # Challenge FaleMais (Laravel 10 version)
 
+*WORK IN PROGRESS*
+
 ## Challenge description
 
 **English**
@@ -34,7 +36,6 @@ Example of values:
 | 011 | 016 | 20 | FaleMais 30 | R$ 0,00 | R$ 38,00 |
 | 011 | 017 | 80 | FaleMais 60 | R$ 37,40 | R$ 136,00 |
 | 018 | 011 | 200 | FaleMais 120 | R$ 167,20 | R$ 380,00 |
-| 018 | 017 | 100 | FaleMais 30 | - | - |
 
 The objective of the challenge is to provide an API that allows the simulation of call values following the proposed rules.
 
@@ -75,7 +76,6 @@ Exemplo de valores:
 | 011 | 016 | 20 | FaleMais 30 | R$ 0,00 | R$ 38,00 |
 | 011 | 017 | 80 | FaleMais 60 | R$ 37,40 | R$ 136,00 |
 | 018 | 011 | 200 | FaleMais 120 | R$ 167,20 | R$ 380,00 |
-| 018 | 017 | 100 | FaleMais 30 | - | - |
 
 O objetivo do desafio é disponibilizar uma API que permita a simulação de valores da ligação seguindo as regras propostas.
 
@@ -92,7 +92,7 @@ Os valores monetários presentes nas tabelas de exemplo estão em *Real*, a moed
 
 *DDD* significa *Discagem Direta à Distância* e é um sistema de ligação telefônica automática entre diferentes àreas urbanas do Brasil por meio da inserção de prefixos, sempre com 3 dígitos.
 
-## Build with
+## Built with
 
 | Name       | Version  |
 | ---------- | -------- |
@@ -104,6 +104,7 @@ Os valores monetários presentes nas tabelas de exemplo estão em *Real*, a moed
 
 ## Docs
 
+* [Answering the challenge](./docs/answering_challenge.md)
 * [Getting Started](./docs/getting_started.md)
 * [Using the API](./docs/using_api.md)
 * [Database](./docs/database.md)
