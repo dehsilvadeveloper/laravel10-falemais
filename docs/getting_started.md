@@ -114,4 +114,4 @@ This script will get down all Docker containers and the application will not be 
 
 With the application ready, you can refer to the following documentation to get more information about how to use the API:
 
-[Using the API](./docs/using_api.md)
+[Using the API](using_api.md)

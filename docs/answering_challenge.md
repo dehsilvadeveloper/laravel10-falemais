@@ -79,7 +79,7 @@ In order to avoid problems with divergent environments on different machines, al
 
 ### Tests
 
-The application tests, important for controlling expected behaviors and detecting flow failures, were built using *PHPUnit*. If you want to know more details about how to run them, you can refer to the **Running Tests** topic on the following [page](./docs/using_api.md).
+The application tests, important for controlling expected behaviors and detecting flow failures, were built using *PHPUnit*. If you want to know more details about how to run them, you can refer to the **Running Tests** topic on the following [page](using_api.md).
 
 ### API documentation
 
@@ -172,7 +172,7 @@ Visando evitar problemas de divergência de ambientes em diferentes máquinas, t
 
 ### Testes
 
-Os testes da aplicação, importantes para controle de comportamentos esperados e detecção de falhas de fluxo, foram construídos usando o *PHPUnit*. Caso queira saber mais detalhes sobre como executá-los, você pode se referir ao tópico **Rodando Testes** na seguinte [página](./docs/using_api.md).
+Os testes da aplicação, importantes para controle de comportamentos esperados e detecção de falhas de fluxo, foram construídos usando o *PHPUnit*. Caso queira saber mais detalhes sobre como executá-los, você pode se referir ao tópico **Rodando Testes** na seguinte [página](using_api.md).
 
 ### Documentação da API
 
