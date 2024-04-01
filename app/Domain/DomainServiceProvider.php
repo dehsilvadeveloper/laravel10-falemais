@@ -7,6 +7,7 @@ use App\Domain\Plan\Providers\PlanServiceProvider;
 use App\Domain\Fare\Providers\FareServiceProvider;
 use App\Domain\CallPrice\Providers\CallPriceServiceProvider;
 use App\Domain\Simulation\Providers\SimulationServiceProvider;
+use App\Domain\User\Providers\UserServiceProvider;
 
 class DomainServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class DomainServiceProvider extends ServiceProvider
         $this->app->register(FareServiceProvider::class);
         $this->app->register(CallPriceServiceProvider::class);
         $this->app->register(SimulationServiceProvider::class);
+        $this->app->register(UserServiceProvider::class);
     }
 
     /**
