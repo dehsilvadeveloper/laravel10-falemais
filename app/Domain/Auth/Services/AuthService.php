@@ -6,6 +6,8 @@ use Throwable;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use App\Domain\Auth\Exceptions\IncorrectPasswordException;
+use App\Domain\Auth\Exceptions\InvalidUserException;
 use App\Domain\Auth\Services\Interfaces\AuthServiceInterface;
 use App\Domain\User\Models\User;
 use App\Domain\User\Services\Interfaces\UserServiceInterface;
