@@ -14,6 +14,28 @@ class UserService implements UserServiceInterface
     {
     }
 
+    public function firstById(int $id): ?User
+    {
+        try {
+            return $this->userRepository->firstById($id);
+        } catch (Throwable $exception) {
+            Log::error(
+                '[UserService] Failed to find a user with the id provided.',
+                [
+                    'error_message' => $exception->getMessage(),
+                    'file' => $exception->getFile(),
+                    'line' => $exception->getLine(),
+                    'data' => [
+                        'id' => $id ?? null
+                    ],
+                    'stack_trace' => $exception->getTrace()
+                ]
+            );
+
+            throw $exception;
+        }
+    }
+
     public function firstByEmail(string $email): ?User
     {
         try {
@@ -26,7 +48,7 @@ class UserService implements UserServiceInterface
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
                     'data' => [
-                        'email'=> $email ?? null
+                        'email' => $email ?? null
                     ],
                     'stack_trace' => $exception->getTrace()
                 ]
