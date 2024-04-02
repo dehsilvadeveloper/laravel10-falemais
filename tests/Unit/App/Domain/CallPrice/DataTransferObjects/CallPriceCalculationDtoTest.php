@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\App\Domain\CallPrice\DataTransferObjects\Eloquent;
+namespace Tests\Unit\App\Domain\CallPrice\DataTransferObjects;
 
 use Tests\TestCase;
 use Spatie\LaravelData\Exceptions\CannotCreateData;

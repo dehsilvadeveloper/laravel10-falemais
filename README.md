@@ -105,7 +105,7 @@ Os valores monetários presentes nas tabelas de exemplo estão em *Real*, a moed
 ## Docs
 
 * [Answering the challenge](./docs/answering_challenge.md)
-* [Getting Started](./docs/getting_started.md)
+* [Getting started](./docs/getting_started.md)
 * [Using the API](./docs/using_api.md)
 * [Database](./docs/database.md)
 

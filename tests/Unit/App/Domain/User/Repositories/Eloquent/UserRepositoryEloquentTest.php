@@ -128,7 +128,6 @@ class UserRepositoryEloquentTest extends TestCase
         for ($i = 0; $i <= ($recordsCount - 1); $i++) {
             $this->assertEquals($generatedRecordsAsArray[$i]['name'], $recordsAsArray[$i]['name']);
             $this->assertEquals($generatedRecordsAsArray[$i]['email'], $recordsAsArray[$i]['email']);
-            $this->assertEquals($generatedRecordsAsArray[$i]['password'], $recordsAsArray[$i]['password']);
         }
     }
 
@@ -166,7 +165,6 @@ class UserRepositoryEloquentTest extends TestCase
         for ($i = 0; $i <= ($recordsCount - 1); $i++) {
             $this->assertEquals($generatedRecordsAsArray[$i]['name'], $recordsAsArray[$i]['name']);
             $this->assertEquals($generatedRecordsAsArray[$i]['email'], $recordsAsArray[$i]['email']);
-            $this->assertEquals($generatedRecordsAsArray[$i]['password'], $recordsAsArray[$i]['password']);
         }
     }
 

@@ -83,7 +83,7 @@ class UserServiceTest extends TestCase
         $this->repositoryMock
             ->shouldReceive('firstByField')
             ->once()
-            ->with($generatedRecord->email)
+            ->with('email', $generatedRecord->email, ['id', 'name', 'email', 'password'])
             ->andReturn($generatedRecord);
 
         $foundRecord = $this->service->firstByEmail($generatedRecord->email);
