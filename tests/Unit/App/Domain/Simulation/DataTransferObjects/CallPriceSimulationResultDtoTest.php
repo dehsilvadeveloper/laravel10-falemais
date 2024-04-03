@@ -55,7 +55,7 @@ class CallPriceSimulationResultDtoTest extends TestCase
     {
         $this->expectException(CannotCreateData::class);
 
-        $dto = CallPriceSimulationResultDto::from([]);
+        CallPriceSimulationResultDto::from([]);
     }
 
     /**
@@ -71,7 +71,7 @@ class CallPriceSimulationResultDtoTest extends TestCase
             'price_without_plan' => 'invalid value',
         ];
 
-        $dto = CallPriceSimulationResultDto::from($data);
+        CallPriceSimulationResultDto::from($data);
     }
 
 }

@@ -91,7 +91,7 @@ class CallPriceCalculationDtoTest extends TestCase
     {
         $this->expectException(CannotCreateData::class);
 
-        $dto = CallPriceCalculationDto::from([]);
+        CallPriceCalculationDto::from([]);
     }
 
     /**
@@ -109,7 +109,7 @@ class CallPriceCalculationDtoTest extends TestCase
             'plan_max_free_minutes' => 'invalid value'
         ];
 
-        $dto = CallPriceCalculationDto::from($data);
+        CallPriceCalculationDto::from($data);
     }
 
     /**
@@ -171,11 +171,11 @@ class CallPriceCalculationDtoTest extends TestCase
      */
     public function test_cannot_create_from_empty_request(): void
     {
-        $this->expectException(CannotCreateData::class);
+        $this->expectException(ValidationException::class);
 
         $request = Request::create('/dummy', 'POST', []);
 
-        $dto = CallPriceCalculationDto::from([]);
+        CallPriceCalculationDto::from($request);
     }
 
     /**
@@ -195,6 +195,6 @@ class CallPriceCalculationDtoTest extends TestCase
 
         $request = Request::create('/dummy', 'POST', $requestData);
 
-        $dto = CallPriceCalculationDto::from($request);
+        CallPriceCalculationDto::from($request);
     }
 }

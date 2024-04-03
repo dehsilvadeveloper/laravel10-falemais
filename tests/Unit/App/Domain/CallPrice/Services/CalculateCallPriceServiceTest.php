@@ -59,7 +59,7 @@ class CalculateCallPriceServiceTest extends TestCase
         ];
         $dto = CallPriceCalculationDto::from($data);
 
-        $result = $this->service->calculateWithPlan($dto);
+        $this->service->calculateWithPlan($dto);
     }
 
     /**

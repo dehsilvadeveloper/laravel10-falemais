@@ -28,14 +28,14 @@ class UserRepositoryEloquentTest extends TestCase
     {
         $data = [
             'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'password' => Hash::make('password')
+            'email' => fake()->unique()->safeEmail()
         ];
 
-        $createdRecord = $this->repository->create($data);
+        $createdRecord = $this->repository->create(array_merge($data, ['password' => 'password']));
 
         $this->assertInstanceOf(User::class, $createdRecord);
         $this->assertDatabaseHas('users', $data);
+        $this->assertTrue(Hash::check('password', $createdRecord->password));
     }
 
     /**
@@ -47,7 +47,7 @@ class UserRepositoryEloquentTest extends TestCase
         $existingRecord = User::factory()->create([
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => Hash::make('password')
+            'password' => 'password'
         ]);
 
         $dataForUpdate = [
@@ -88,7 +88,7 @@ class UserRepositoryEloquentTest extends TestCase
         $existingRecordData = [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => Hash::make('password')
+            'password' => 'password'
         ];
         $existingRecord = User::factory()->create($existingRecordData);
 

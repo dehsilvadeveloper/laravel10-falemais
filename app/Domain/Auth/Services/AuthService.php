@@ -64,14 +64,14 @@ class AuthService implements AuthServiceInterface
 
         if (!$user) {
             throw new InvalidUserException(
-                `Could not found a valid user with the email: $email.`,
+                "Could not found a valid user with the email: {$email}.",
                 Response::HTTP_BAD_REQUEST
             );
         }
 
         if (!Hash::check($password, $user->password)) {
             throw new IncorrectPasswordException(
-                `The password provided for this user is incorrect.`,
+                'The password provided for this user is incorrect.',
                 Response::HTTP_BAD_REQUEST
             );
         }
