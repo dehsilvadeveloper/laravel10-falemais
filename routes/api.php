@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PlanController;
 use App\Http\Controllers\Api\FareController;
 use App\Http\Controllers\Api\CallPriceSimulationController;
@@ -17,7 +18,7 @@ use App\Http\Controllers\Api\CallPriceSimulationController;
 |
 */
 
-//Route::post('/auth/login', [AuthController::class, 'login'])->name('auth::login');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth::login');
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::prefix('/auth')->group(function () {

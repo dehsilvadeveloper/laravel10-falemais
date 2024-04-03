@@ -44,6 +44,9 @@ class CallPriceSimulationController extends Controller
                     'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
+                    'data' => [
+                        'received_data' => $request->all() ?? null
+                    ],
                     'stack_trace' => $exception->getTrace()
                 ]
             );

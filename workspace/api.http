@@ -28,7 +28,9 @@ Content-Type: {{contentType}}
 
 ### Access Token Definition
 
-@accessToken={{authLogin.response.body.accessToken}}
+@accessToken={{authLogin.response.body.data.access_token}}
+
+# To delete tokens, you can use this code on Laravel Tinker: \App\Domain\User\Models\User::find(1)->tokens()->delete();
 
 ### Get Authenticated User Data
 # @name authMe
