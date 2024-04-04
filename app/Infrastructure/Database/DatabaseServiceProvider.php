@@ -9,6 +9,8 @@ use App\Infrastructure\Database\Eloquent\PlanRepositoryEloquent;
 use App\Domain\Plan\Repositories\PlanRepositoryInterface;
 use App\Infrastructure\Database\Eloquent\FareRepositoryEloquent;
 use App\Domain\Fare\Repositories\FareRepositoryInterface;
+use App\Infrastructure\Database\Eloquent\UserRepositoryEloquent;
+use App\Domain\User\Repositories\UserRepositoryInterface;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,7 @@ class DatabaseServiceProvider extends ServiceProvider
         $this->bindBaseRepositoryClasses();
         $this->bindPlanRepositoryClasses();
         $this->bindFareRepositoryClasses();
+        $this->bindUserRepositoryClasses();
     }
 
     /**
@@ -61,5 +64,15 @@ class DatabaseServiceProvider extends ServiceProvider
     private function bindFareRepositoryClasses(): void
     {
         $this->app->bind(FareRepositoryInterface::class, FareRepositoryEloquent::class);
+    }
+
+    /**
+     * Bind repository classes for domain User
+     * 
+     * @return void
+     */
+    private function bindUserRepositoryClasses(): void
+    {
+        $this->app->bind(UserRepositoryInterface::class, UserRepositoryEloquent::class);
     }
 }

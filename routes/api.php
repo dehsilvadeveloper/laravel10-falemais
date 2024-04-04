@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PlanController;
 use App\Http\Controllers\Api\FareController;
 use App\Http\Controllers\Api\CallPriceSimulationController;
@@ -17,18 +18,24 @@ use App\Http\Controllers\Api\CallPriceSimulationController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
 
-Route::prefix('plans')->group(function () {
-    Route::get('/', [PlanController::class, 'getAll'])->name('plan::list');
-});
+Route::middleware('auth:sanctum')->group( function () {
+    Route::prefix('/auth')->group(function () {
+        Route::get('/me', function (Request $request) {
+            return $request->user();
+        })->name('auth.me');
+    });
 
-Route::prefix('fares')->group(function () {
-    Route::get('/', [FareController::class, 'getAll'])->name('fare::list');
-});
+    Route::prefix('/plans')->group(function () {
+        Route::get('/', [PlanController::class, 'getAll'])->name('plan.list');
+    });
 
-Route::prefix('call-prices')->group(function () {
-    Route::post('/simulate', [CallPriceSimulationController::class, 'simulate'])->name('call-price::simulate');
+    Route::prefix('/fares')->group(function () {
+        Route::get('/', [FareController::class, 'getAll'])->name('fare.list');
+    });
+    
+    Route::prefix('/call-prices')->group(function () {
+        Route::post('/simulate', [CallPriceSimulationController::class, 'simulate'])->name('call-price.simulate');
+    });
 });

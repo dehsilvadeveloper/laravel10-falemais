@@ -45,6 +45,9 @@ class PlanService implements PlanServiceInterface
                     'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
+                    'data' => [
+                        'id' => $id ?? null
+                    ],
                     'stack_trace' => $exception->getTrace()
                 ]
             );
