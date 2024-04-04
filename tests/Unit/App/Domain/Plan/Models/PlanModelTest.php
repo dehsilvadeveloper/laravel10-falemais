@@ -15,7 +15,8 @@ class PlanModelTest extends ModelTestCase
     {
         $dto = ModelConfigurationAssertionParamsDto::from([
             'model'=> new Plan(),
-            'fillable' => ['name', 'max_free_minutes']
+            'fillable' => ['name', 'max_free_minutes'],
+            'table' => 'plans'
         ]);
         
         $this->runConfigurationAssertions($dto);

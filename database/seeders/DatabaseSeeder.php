@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PlanSeeder::class,
-            FareSeeder::class
+            FareSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

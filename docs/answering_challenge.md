@@ -73,6 +73,36 @@ Regarding API security, route protection was used with the requirement to send a
 
 Although nothing in this regard was requested in the challenge description, it was considered valid to include some type of protection for the API.
 
+### Custom Stubs
+
+As an extra of the project, *stubs* files were implemented to create classes of the type *service*, *repository* and *DTO*. You can use them during development using *artisan* commands, as shown in the following examples:
+
+Creating service class:
+
+```
+php artisan make:service UserService
+or
+php artisan make:service Domain/User/Services/UserService
+```
+
+Creating repository class:
+
+```
+php artisan make:repository UserRepository
+or
+php artisan make:repository Domain/User/Repositories/UserRepository
+```
+
+Creating DTO (Data Transfer Object) class:
+
+```
+php artisan make:dto CreateUserDto
+or
+php artisan make:dto Domain/User/DataTransferObjects/CreateUserDto
+```
+
+The DTO classes make use of the package **laravel-data**.
+
 ### Environment
 
 In order to avoid problems with divergent environments on different machines, all the application code was included in containers created with the **Docker** tool.
@@ -165,6 +195,36 @@ Authorization: Bearer {{accessToken}}
 Com relação a segurança da API, foi utilizada uma proteção das rotas com a exigência de envio de um token de acesso no cabeçalho de todas as requisições. A aplicação fornece um usuário padrão para uso e uma rota para geração de tokens. Detalhes sobre esta rota podem ser obtidos na *documentação da API*.
 
 Embora não tenha sido solicitado nada nesse sentido na descrição do desafio, foi considerado válido incluir algum tipo de proteção para a API.
+
+### Stubs customizados
+
+Como um extra do projeto foram implementados arquivos *stubs* para criar classes do tipo *service*, *repository* e *DTO*. Você pode utilizá-los durante desenvolvimento a partir de comandos no *artisan*, conforme exemplos a seguir:
+
+Criando classe service:
+
+```
+php artisan make:service UserService
+ou
+php artisan make:service Domain/User/Services/UserService
+```
+
+Criando classe repository:
+
+```
+php artisan make:repository UserRepository
+ou
+php artisan make:repository Domain/User/Repositories/UserRepository
+```
+
+Criando classe DTO (Data Transfer Object):
+
+```
+php artisan make:dto CreateUserDto
+ou
+php artisan make:dto Domain/User/DataTransferObjects/CreateUserDto
+```
+
+As classes DTO fazem uso do package **laravel-data**.
 
 ### Ambiente
 

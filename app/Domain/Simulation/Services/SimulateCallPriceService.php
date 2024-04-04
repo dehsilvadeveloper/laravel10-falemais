@@ -47,6 +47,9 @@ class SimulateCallPriceService implements SimulateCallPriceServiceInterface
                     'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
+                    'data' => [
+                        'received_dto_data' => $dto->toArray() ?? null
+                    ],
                     'stack_trace' => $exception->getTrace()
                 ]
             );

@@ -45,6 +45,9 @@ class FareService implements FareServiceInterface
                     'error_message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
+                    'data' => [
+                        'attributes' => $where ?? null
+                    ],
                     'stack_trace' => $exception->getTrace()
                 ]
             );

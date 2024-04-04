@@ -16,7 +16,8 @@ class FareModelTest extends ModelTestCase
         $dto = ModelConfigurationAssertionParamsDto::from([
             'model'=> new Fare(),
             'fillable' => ['ddd_origin', 'ddd_destination', 'price_per_minute'],
-            'casts' => ['id' => 'int', 'price_per_minute' => 'float']
+            'casts' => ['id' => 'int', 'price_per_minute' => 'float'],
+            'table' => 'fares'
         ]);
         
         $this->runConfigurationAssertions($dto);
