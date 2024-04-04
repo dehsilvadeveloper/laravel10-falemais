@@ -10,6 +10,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Queue;
 use App\Domain\Plan\Models\Plan;
 use App\Domain\Plan\Services\Interfaces\PlanServiceInterface;
@@ -36,7 +38,9 @@ class PlanControllerTest extends TestCase
      */
     public function test_can_get_list_of_records(): void
     {
+        Mail::fake();
         Event::fake();
+        Notification::fake();
         Queue::fake();
 
         $recordsCount = 3;
@@ -60,7 +64,9 @@ class PlanControllerTest extends TestCase
      */
     public function test_can_get_empty_list_of_records(): void
     {
+        Mail::fake();
         Event::fake();
+        Notification::fake();
         Queue::fake();
 
         $this->serviceMock
@@ -81,7 +87,9 @@ class PlanControllerTest extends TestCase
      */
     public function test_generates_log_if_cannot_get_list(): void
     {
+        Mail::fake();
         Event::fake();
+        Notification::fake();
         Queue::fake();
 
         Log::shouldReceive('error')
