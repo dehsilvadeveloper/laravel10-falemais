@@ -18,24 +18,24 @@ use App\Http\Controllers\Api\CallPriceSimulationController;
 |
 */
 
-Route::post('/auth/login', [AuthController::class, 'login'])->name('auth::login');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::prefix('/auth')->group(function () {
         Route::get('/me', function (Request $request) {
             return $request->user();
-        })->name('auth::me');
+        })->name('auth.me');
     });
 
     Route::prefix('/plans')->group(function () {
-        Route::get('/', [PlanController::class, 'getAll'])->name('plan::list');
+        Route::get('/', [PlanController::class, 'getAll'])->name('plan.list');
     });
 
     Route::prefix('/fares')->group(function () {
-        Route::get('/', [FareController::class, 'getAll'])->name('fare::list');
+        Route::get('/', [FareController::class, 'getAll'])->name('fare.list');
     });
     
     Route::prefix('/call-prices')->group(function () {
-        Route::post('/simulate', [CallPriceSimulationController::class, 'simulate'])->name('call-price::simulate');
+        Route::post('/simulate', [CallPriceSimulationController::class, 'simulate'])->name('call-price.simulate');
     });
 });
