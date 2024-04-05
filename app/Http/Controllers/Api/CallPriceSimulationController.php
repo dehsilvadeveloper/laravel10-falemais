@@ -7,6 +7,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use App\Domain\Common\ValueObjects\DddObject;
+use App\Domain\Fare\Exceptions\FareNotFoundException;
+use App\Domain\Plan\Exceptions\PlanNotFoundException;
 use App\Domain\Simulation\DataTransferObjects\CallPriceSimulationDto;
 use App\Domain\Simulation\Services\Interfaces\SimulateCallPriceServiceInterface;
 use App\Http\Controllers\Controller;
@@ -50,9 +52,15 @@ class CallPriceSimulationController extends Controller
                     'stack_trace' => $exception->getTrace()
                 ]
             );
+
+            $exceptionTypes = [FareNotFoundException::class, PlanNotFoundException::class];
+
+            $errorMessage = in_array(get_class($exception), $exceptionTypes)
+                ? $exception->getMessage() 
+                : 'An error has occurred. Could not simulate the call price as requested.';
             
             return $this->sendErrorResponse(
-                message: 'An error has occurred. Could not simulate the call price as requested.',
+                message: $errorMessage,
                 code: $exception->getCode()
             );
         }

@@ -36,6 +36,9 @@ class GetAuthenticatedUserTest extends TestCase
         $this->assertNotEmpty($response['id']);
         $this->assertNotEmpty($response['name']);
         $this->assertNotEmpty($response['email']);
+        $this->assertEquals($user->id, $response['id']);
+        $this->assertEquals($user->name, $response['name']);
+        $this->assertEquals($user->email, $response['email']);
     }
 
     /**
