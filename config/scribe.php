@@ -4,14 +4,24 @@ use Knuckles\Scribe\Extracting\Strategies;
 
 return [
     // The HTML <title> for the generated documentation. If this is empty, Scribe will infer it from config('app.name').
-    'title' => null,
+    'title' => 'Laravel 10 FaleMais API',
 
     // A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.
-    'description' => '',
+    'description' => 'API that allows the simulation of call prices following plan`s rules proposed.',
+
+    // Text for introduction
+    'intro_text' => <<<INTRO
+This documentation will provide all the information you need to work with our API.
+
+<aside>
+As you scroll, you'll see code examples for working with the API in the available programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).
+</aside>
+INTRO,
 
     // The base URL displayed in the docs. If this is empty, Scribe will use the value of config('app.url') at generation time.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
-    'base_url' => null,
+    'base_url' => '{{config("app.url")}}:{{config("app.port")}}',
 
     'routes' => [
         [
@@ -44,7 +54,7 @@ return [
     // - "laravel" will generate the documentation as a Blade view, so you can add routing and authentication.
     // - "external_static" and "external_laravel" do the same as above, but generate a basic template,
     // passing the OpenAPI spec as a URL, allowing you to easily use the docs with an external generator
-    'type' => 'static',
+    'type' => 'laravel',
 
     // See https://scribe.knuckles.wtf/laravel/reference/config#theme for supported options
     'theme' => 'default',
@@ -62,7 +72,7 @@ return [
 
         // URL path to use for the docs endpoint (if `add_routes` is true).
         // By default, `/docs` opens the HTML page, `/docs.postman` opens the Postman collection, and `/docs.openapi` the OpenAPI spec.
-        'docs_url' => '/docs',
+        'docs_url' => '/api-docs',
 
         // Directory within `public` in which to store CSS and JS assets.
         // By default, assets are stored in `public/vendor/scribe`.
@@ -96,7 +106,7 @@ return [
     // How is your API authenticated? This information will be used in the displayed docs, generated examples and response calls.
     'auth' => [
         // Set this to true if ANY endpoints in your API use authentication.
-        'enabled' => false,
+        'enabled' => true,
 
         // Set this to true if your API should be authenticated by default. If so, you must also set `enabled` (above) to true.
         // You can then use @unauthenticated or @authenticated on individual endpoints to change their status from the default.
@@ -121,21 +131,14 @@ return [
         'extra_info' => 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.',
     ],
 
-    // Text to place in the "Introduction" section, right after the `description`. Markdown and HTML are supported.
-    'intro_text' => <<<INTRO
-This documentation aims to provide all the information you need to work with our API.
-
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
-INTRO
-    ,
-
     // Example requests for each endpoint will be shown in each of these languages.
     // Supported options are: bash, javascript, php, python
     // To add a language of your own, see https://scribe.knuckles.wtf/laravel/advanced/example-requests
     'example_languages' => [
         'bash',
         'javascript',
+        'php',
+        'python'
     ],
 
     // Generate a Postman collection (v2.1.0) in addition to HTML docs.
@@ -143,7 +146,7 @@ INTRO
     // For 'laravel' docs, it will be generated to storage/app/scribe/collection.json.
     // Setting `laravel.add_routes` to true (above) will also add a route for the collection.
     'postman' => [
-        'enabled' => true,
+        'enabled' => false,
 
         'overrides' => [
             // 'info.version' => '2.0.0',
@@ -155,7 +158,7 @@ INTRO
     // For 'laravel' docs, it will be generated to storage/app/scribe/openapi.yaml.
     // Setting `laravel.add_routes` to true (above) will also add a route for the spec.
     'openapi' => [
-        'enabled' => true,
+        'enabled' => false,
 
         'overrides' => [
             // 'info.version' => '2.0.0',

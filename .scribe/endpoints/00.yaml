@@ -1,0 +1,240 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address. Must be at least 6 characters. Must not be greater than 70 characters.'
+        required: true
+        example: katelin38@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters.'
+        required: true
+        example: '%0>(ZG}o5Hi2Yq['
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      email: katelin38@example.org
+      password: '%0>(ZG}o5Hi2Yq['
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/auth/me
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/plans
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/fares
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/call-prices/simulate
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      ddd_origin:
+        name: ddd_origin
+        description: 'Must be at least 3 characters. Must not be greater than 3 characters.'
+        required: true
+        example: ykv
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      ddd_destination:
+        name: ddd_destination
+        description: 'Must be at least 3 characters. Must not be greater than 3 characters.'
+        required: true
+        example: h
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      call_minutes:
+        name: call_minutes
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      plan_id:
+        name: plan_id
+        description: ''
+        required: true
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      ddd_origin: ykv
+      ddd_destination: h
+      call_minutes: 11
+      plan_id: 8
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
