@@ -27,12 +27,6 @@
                     body .content .python-example code { display: none; }
             </style>
 
-    <script>
-        var tryItOutBaseUrl = "http://localhost";
-        var useCsrf = Boolean();
-        var csrfUrl = "/sanctum/csrf-cookie";
-    </script>
-    <script src="{{ asset("/vendor/scribe/js/tryitout-4.35.0.js") }}"></script>
 
     <script src="{{ asset("/vendor/scribe/js/theme-default-4.35.0.js") }}"></script>
 
@@ -78,6 +72,9 @@
                                                     <li class="tocify-item level-2" data-unique="authentication-POSTapi-auth-login">
                                 <a href="#authentication-POSTapi-auth-login">Login</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-GETapi-auth-me">
+                                <a href="#authentication-GETapi-auth-me">Authenticated user</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-call-prices" class="tocify-header">
@@ -87,16 +84,6 @@
                                     <ul id="tocify-subheader-call-prices" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="call-prices-POSTapi-call-prices-simulate">
                                 <a href="#call-prices-POSTapi-call-prices-simulate">Simulates a call price</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
-                </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-auth-me">
-                                <a href="#endpoints-GETapi-auth-me">GET api/auth/me</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -140,10 +127,8 @@
     <strong>Base URL</strong>: <code>{{config("app.url")}}:{{config("app.port")}}</code>
 </aside>
 <p>This documentation will provide all the information you need to work with our API.</p>
-<aside>
-As you scroll, you'll see code examples for working with the API in the available programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).
-</aside>
+<aside>As you scroll, you'll see code examples for working with the API in the available programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_ACCESS_TOKEN}"</code></strong>.</p>
@@ -304,23 +289,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-login', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-auth-login"
-                    onclick="tryItOut('POSTapi-auth-login');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-auth-login"
-                    onclick="cancelTryOut('POSTapi-auth-login');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-auth-login"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -396,6 +364,212 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
 <br>
 <p>The date and time in which the token will expire.</p>
+        </div>
+                        <h2 id="authentication-GETapi-auth-me">Authenticated user</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint lets you get information about the authenticated user.</p>
+
+<span id="example-requests-GETapi-auth-me">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "{{config("app.url")}}:{{config("app.port")}}/api/auth/me" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "{{config("app.url")}}:{{config("app.port")}}/api/auth/me"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = '{{config("app.url")}}:{{config("app.port")}}/api/auth/me';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {YOUR_ACCESS_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = '{{config("app.url")}}:{{config("app.port")}}/api/auth/me'
+headers = {
+  'Authorization': 'Bearer {YOUR_ACCESS_TOKEN}',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth-me">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Default App&quot;,
+        &quot;email&quot;: &quot;default@app.com&quot;,
+        &quot;email_verified_at&quot;: null,
+        &quot;created_at&quot;: &quot;2024-04-02T20:06:26.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-04-02T20:06:26.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, unexpected error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Internal Server Error.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth-me" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth-me"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth-me"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth-me" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth-me">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth-me" data-method="GET"
+      data-path="api/auth/me"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth-me', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/me</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-auth-me"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth-me"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth-me"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+<br>
+<p>The identifier of the user.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>The name of the user.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>The e-mail of the user.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email_verified_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>The date and time in which the e-mail of the user was verified.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>created_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>The date and time in which the user was created.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>updated_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>The date and time in which the user was last updated.</p>
         </div>
                     <h1 id="call-prices">Call Prices</h1>
 
@@ -572,23 +746,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-call-prices-simulate', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-call-prices-simulate"
-                    onclick="tryItOut('POSTapi-call-prices-simulate');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-call-prices-simulate"
-                    onclick="cancelTryOut('POSTapi-call-prices-simulate');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-call-prices-simulate"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -691,165 +848,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <br>
 <p>The call price if calculate without using a plan.</p>
         </div>
-                    <h1 id="endpoints">Endpoints</h1>
-
-    
-
-                                <h2 id="endpoints-GETapi-auth-me">GET api/auth/me</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-auth-me">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "{{config("app.url")}}:{{config("app.port")}}/api/auth/me" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "{{config("app.url")}}:{{config("app.port")}}/api/auth/me"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = '{{config("app.url")}}:{{config("app.port")}}/api/auth/me';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-
-<div class="python-example">
-    <pre><code class="language-python">import requests
-import json
-
-url = '{{config("app.url")}}:{{config("app.port")}}/api/auth/me'
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-}
-
-response = requests.request('GET', url, headers=headers)
-response.json()</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-auth-me">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-auth-me" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-auth-me"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-auth-me"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-auth-me" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-auth-me">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-auth-me" data-method="GET"
-      data-path="api/auth/me"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth-me', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-auth-me"
-                    onclick="tryItOut('GETapi-auth-me');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-auth-me"
-                    onclick="cancelTryOut('GETapi-auth-me');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-auth-me"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/auth/me</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-auth-me"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-auth-me"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                <h1 id="fares">Fares</h1>
+                    <h1 id="fares">Fares</h1>
 
     <p>Endpoints for managing fares</p>
 
@@ -995,23 +994,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-fares', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-fares"
-                    onclick="tryItOut('GETapi-fares');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-fares"
-                    onclick="cancelTryOut('GETapi-fares');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-fares"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1226,23 +1208,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-plans', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-plans"
-                    onclick="tryItOut('GETapi-plans');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-plans"
-                    onclick="cancelTryOut('GETapi-plans');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-plans"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>

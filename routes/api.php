@@ -22,9 +22,7 @@ Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login')
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::prefix('/auth')->group(function () {
-        Route::get('/me', function (Request $request) {
-            return $request->user();
-        })->name('auth.me');
+        Route::get('/me', [AuthController::class, 'me'])->name('auth.me');
     });
 
     Route::prefix('/plans')->group(function () {

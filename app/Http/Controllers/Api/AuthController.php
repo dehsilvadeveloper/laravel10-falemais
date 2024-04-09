@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Throwable;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use App\Domain\Auth\DataTransferObjects\LoginDto;
@@ -96,5 +97,43 @@ class AuthController extends Controller
                 code: $exception->getCode()
             );
         }
+    }
+
+    /**
+     * Authenticated user
+     *
+     * This endpoint lets you get information about the authenticated user.
+     * 
+     * @responseField id integer The identifier of the user.
+     * @responseField name string The name of the user.
+     * @responseField email string The e-mail of the user.
+     * @responseField email_verified_at string The date and time in which the e-mail of the user was verified.
+     * @responseField created_at string The date and time in which the user was created.
+     * @responseField updated_at string The date and time in which the user was last updated.
+     * 
+     * @response status=200 scenario=success {
+     *      "data": {
+     *          "id": 1,
+     *          "name": "Default App",
+     *          "email": "default@app.com",
+     *          "email_verified_at": null,
+     *          "created_at": "2024-04-02T20:06:26.000000Z",
+     *          "updated_at": "2024-04-02T20:06:26.000000Z"
+     *      }
+     * }
+     * 
+     * @response status=500 scenario="unexpected error" {
+     *      "message": "Internal Server Error."
+     * }
+     * 
+     * @authenticated
+     * 
+     */
+    public function me(Request $request): JsonResponse
+    {
+        return $this->sendSuccessResponse(
+            data: $request->user(),
+            code: Response::HTTP_OK
+        );
     }
 }

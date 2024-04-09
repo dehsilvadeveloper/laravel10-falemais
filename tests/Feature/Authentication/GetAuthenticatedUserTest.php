@@ -24,21 +24,23 @@ class GetAuthenticatedUserTest extends TestCase
 
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonStructure([
-            'id',
-            'name',
-            'email',
-            'email_verified_at',
-            'created_at',
-            'updated_at'
+            'data' => [
+                'id',
+                'name',
+                'email',
+                'email_verified_at',
+                'created_at',
+                'updated_at'
+            ]
         ]);
         $response->assertJsonMissing(['password']);
 
-        $this->assertNotEmpty($response['id']);
-        $this->assertNotEmpty($response['name']);
-        $this->assertNotEmpty($response['email']);
-        $this->assertEquals($user->id, $response['id']);
-        $this->assertEquals($user->name, $response['name']);
-        $this->assertEquals($user->email, $response['email']);
+        $this->assertNotEmpty($response['data']['id']);
+        $this->assertNotEmpty($response['data']['name']);
+        $this->assertNotEmpty($response['data']['email']);
+        $this->assertEquals($user->id, $response['data']['id']);
+        $this->assertEquals($user->name, $response['data']['name']);
+        $this->assertEquals($user->email, $response['data']['email']);
     }
 
     /**
