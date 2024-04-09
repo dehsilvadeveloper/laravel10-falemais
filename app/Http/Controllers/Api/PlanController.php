@@ -11,6 +11,11 @@ use App\Domain\Plan\Services\Interfaces\PlanServiceInterface;
 use App\Http\Resources\PlanCollection;
 use App\Traits\Http\ApiResponses;
 
+/**
+ * @group Plans
+ *
+ * Endpoints for managing plans
+ */
 class PlanController extends Controller
 {
     use ApiResponses;
@@ -19,6 +24,45 @@ class PlanController extends Controller
     {
     }
 
+    /**
+     * List plans
+     *
+     * This endpoint lets you get a list of plans.
+     * 
+     * @responseField id integer The identifier of the plan.
+     * @responseField name string The name of the plan.
+     * @responseField max_free_minutes integer The total free minutes to which the customer using the plan is entitled.
+     * 
+     * @response status=200 scenario=success {
+     *      "data": [
+     *          {
+     *              "id": 1,
+     *              "name": "FaleMais 30",
+     *              "max_free_minutes": 30
+     *          },
+     *          {
+     *              "id": 2,
+     *              "name": "FaleMais 60",
+     *              "max_free_minutes": 60
+     *          },
+     *          {
+     *              "id": 3,
+     *              "name": "FaleMais 120",
+     *              "max_free_minutes": 120
+     *          }
+     *      ]
+     * }
+     * 
+     * @response status=401 scenario="unauthenticated" {
+     *      "message": "Unauthenticated."
+     * }
+     * 
+     * @response status=500 scenario="unexpected error" {
+     *      "message": "Internal Server Error."
+     * }
+     * 
+     * @authenticated
+     */
     public function getAll(): JsonResponse
     {
         try {

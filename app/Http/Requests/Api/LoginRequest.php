@@ -26,4 +26,21 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string', 'min:6']
         ];
     }
+
+    /**
+     * Define body params to be used by the API documentation
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'email' => [
+                'description' => 'The e-mail of the user.',
+                'example' => 'test@test.com'
+            ],
+            'password' => [
+                'description' => 'The password of the user.',
+                'example' => 'LfMJvB5b9xZbF76Q4tFT'
+            ]
+        ];
+    }
 }

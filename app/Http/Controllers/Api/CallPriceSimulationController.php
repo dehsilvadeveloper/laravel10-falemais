@@ -15,6 +15,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\SimulateCallPriceRequest;
 use App\Traits\Http\ApiResponses;
 
+/**
+ * @group Call Prices
+ *
+ * Endpoints for managing call prices calculation
+ */
 class CallPriceSimulationController extends Controller
 {
     use ApiResponses;
@@ -23,6 +28,39 @@ class CallPriceSimulationController extends Controller
     {
     }
 
+    /**
+     * Simulates a call price
+     *
+     * This endpoint lets you simulate a call price.
+     * 
+     * @responseField price_with_plan number The call price if calculate using one of the plans.
+     * @responseField price_without_plan number The call price if calculate without using a plan.
+     * 
+     * @response status=200 scenario=success {
+     *      "data": {
+     *          "price_with_plan": 167.2,
+     *          "price_without_plan": 380
+     *      }
+     * }
+     * 
+     * @response status=400 scenario="fare not found" {
+     *      "message": "Cannot proceed. Could no find a fare with the ddd origin and ddd destination provided."
+     * }
+     * 
+     * @response status=400 scenario="plan not found" {
+     *      "message": "Cannot proceed. Could no find a plan with the id provided."
+     * }
+     * 
+     * @response status=401 scenario="unauthenticated" {
+     *      "message": "Unauthenticated."
+     * }
+     * 
+     * @response status=500 scenario="unexpected error" {
+     *      "message": "Internal Server Error."
+     * }
+     * 
+     * @authenticated
+     */
     public function simulate(SimulateCallPriceRequest $request): JsonResponse
     {
         try {
