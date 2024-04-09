@@ -28,4 +28,30 @@ class SimulateCallPriceRequest extends FormRequest
             'plan_id' => ['required', 'integer', 'gt:0', 'exists:plans,id']
         ];
     }
+
+    /**
+     * Define body params to be used by the API documentation
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'ddd_origin' => [
+                'description' => 'The DDD for the origin of the call.',
+                'example' => '011'
+            ],
+            'ddd_destination' => [
+                'description' => 'The DDD for the destination of the call.',
+                'example' => '017'
+            ],
+            'call_minutes' => [
+                'description' => 'The total duration time of the call in minutes. '
+                    . 'The call minutes field must be greater than 0.',
+                'example' => 80
+            ],
+            'plan_id' => [
+                'description' => 'The plan ot be used on the simulation. The plan id field must be greater than 0.',
+                'example' => 2
+            ]
+        ];
+    }
 }

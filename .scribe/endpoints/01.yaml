@@ -1,0 +1,123 @@
+name: Fares
+description: |-
+
+  Endpoints for managing fares
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/fares
+    metadata:
+      groupName: Fares
+      groupDescription: |-
+
+        Endpoints for managing fares
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List fares'
+      description: 'This endpoint lets you get a list of fares.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "ddd_origin": "011",
+                       "ddd_destination": "016",
+                       "price_per_minute": 1.9
+                   },
+                   {
+                       "id": 2,
+                       "ddd_origin": "016",
+                       "ddd_destination": "011",
+                       "price_per_minute": 2.9
+                   },
+                   {
+                       "id": 3,
+                       "ddd_origin": "011",
+                       "ddd_destination": "017",
+                       "price_per_minute": 1.7
+                   },
+               ]
+          }
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+               "message": "Unauthenticated."
+          }
+        headers: []
+        description: unauthenticated
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+               "message": "Internal Server Error."
+          }
+        headers: []
+        description: 'unexpected error'
+        custom: []
+    responseFields:
+      id:
+        name: id
+        description: 'The identifier of the fare.'
+        required: false
+        example: null
+        type: ''
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      ddd_origin:
+        name: ddd_origin
+        description: 'The DDD for the origin of the call.'
+        required: false
+        example: null
+        type: ''
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      ddd_destination:
+        name: ddd_destination
+        description: 'The DDD for the destination of the call.'
+        required: false
+        example: null
+        type: ''
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      price_per_minute:
+        name: price_per_minute
+        description: 'The price per minute of the call.'
+        required: false
+        example: null
+        type: ''
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 8c4aaZPVb3D6hevgdE1k56f'
+    controller: null
+    method: null
+    route: null
+    custom: []
