@@ -1,17 +1,21 @@
-name: Endpoints
-description: ''
+name: Authentication
+description: |-
+
+  Endpoints for managing API authentication
 endpoints:
   -
     httpMethods:
       - POST
     uri: api/auth/login
     metadata:
-      groupName: Endpoints
-      groupDescription: ''
+      groupName: Authentication
+      groupDescription: |-
+
+        Endpoints for managing API authentication
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
+      title: Login
+      description: 'This endpoint lets you login an API user, generating an access token for him.'
       authenticated: false
       custom: []
     headers:
@@ -44,86 +48,75 @@ endpoints:
       email: test@test.com
       password: LfMJvB5b9xZbF76Q4tFT
     fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/auth/me
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
     responses:
       -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        status: 200
+        content: |-
+          {
+               "data": {
+                   "access_token": "1|laravel10_falemaisUI8A7aHrlN0XCyKApJCfO2uzK9Gc4X8DWZtFJbCY4d735783",
+                   "token_type": "Bearer",
+                   "expires_at": "2024-02-01 12:27:37"
+               }
+          }
+        headers: []
+        description: success
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/plans
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
       -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        status: 400
+        content: |-
+          {
+               "message": "Could not found a valid user with the email: test@test.com."
+          }
+        headers: []
+        description: 'user with email provided not found'
         custom: []
-    responseFields: []
+      -
+        status: 400
+        content: |-
+          {
+               "message": "The password provided for this user is incorrect."
+          }
+        headers: []
+        description: 'password incorrect'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+               "message": "Internal Server Error."
+          }
+        headers: []
+        description: 'unexpected error'
+        custom: []
+    responseFields:
+      access_token:
+        name: access_token
+        description: 'The access token that will be used to authenticate API requests.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      token_type:
+        name: token_type
+        description: 'The type of token generated.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      expires_at:
+        name: expires_at
+        description: 'The date and time in which the token will expire.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
     auth: []
     controller: null
     method: null

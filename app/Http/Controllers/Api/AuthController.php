@@ -14,6 +14,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginRequest;
 use App\Traits\Http\ApiResponses;
 
+/**
+ * @group Authentication
+ *
+ * Endpoints for managing API authentication
+ */
 class AuthController extends Controller
 {
     use ApiResponses;
@@ -22,6 +27,36 @@ class AuthController extends Controller
     {
     }
 
+    /**
+     * Login
+     *
+     * This endpoint lets you login an API user, generating an access token for him.
+     * 
+     * @responseField access_token string The access token that will be used to authenticate API requests.
+     * @responseField token_type string The type of token generated.
+     * @responseField expires_at string The date and time in which the token will expire.
+     * 
+     * @response status=200 scenario=success {
+     *      "data": {
+     *          "access_token": "1|laravel10_falemaisUI8A7aHrlN0XCyKApJCfO2uzK9Gc4X8DWZtFJbCY4d735783",
+     *          "token_type": "Bearer",
+     *          "expires_at": "2024-02-01 12:27:37"
+     *      }
+     * }
+     * 
+     * @response status=400 scenario="user with email provided not found" {
+     *      "message": "Could not found a valid user with the email: test@test.com."
+     * }
+     * 
+     * @response status=400 scenario="password incorrect" {
+     *      "message": "The password provided for this user is incorrect."
+     * }
+     * 
+     * @response status=500 scenario="unexpected error" {
+     *      "message": "Internal Server Error."
+     * }
+     * 
+     */
     public function login(LoginRequest $request): JsonResponse
     {
         try {

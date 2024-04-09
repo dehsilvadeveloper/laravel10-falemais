@@ -128,7 +128,8 @@ INTRO,
         'placeholder' => '{YOUR_ACCESS_TOKEN}',
 
         // Any extra authentication-related info for your users. Markdown and HTML are supported.
-        'extra_info' => 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.',
+        'extra_info' => 'You can generate your <b>API access token</b> by using the endpoint `auth/login`, '
+            . 'present in the group <b>authentication</b> of this documentation.',
     ],
 
     // Example requests for each endpoint will be shown in each of these languages.
