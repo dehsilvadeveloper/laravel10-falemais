@@ -12,7 +12,7 @@ To test the API endpoints you will need a program that can perform http requests
 
 The application provides a page generated with the package **Scribe** that contains details about all the *API endpoints*.
 
-![API documentation page ilustration example](images/print_api_doc.png "a title")
+![API documentation page ilustration example](images/print_api_doc.png "API documentation page")
 
 To access the page you have to use the following url:
 
