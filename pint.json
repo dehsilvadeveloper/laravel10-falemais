@@ -1,3 +1,78 @@
 {
-    "preset": "psr12"
+    "preset": "psr12",
+    "rules": {
+        "array_indentation": true,
+        "array_syntax": {
+            "syntax": "short"
+        },
+        "binary_operator_spaces": {
+            "default": "single_space"
+        },
+        "blank_line_after_namespace": true,
+        "class_definition": {
+            "inline_constructor_arguments": true,
+            "multi_line_extends_each_single_line": false,
+            "single_item_single_line": false,
+            "single_line": false,
+            "space_before_parenthesis": false
+        },
+        "clean_namespace": true,
+        "combine_consecutive_issets": true,
+        "combine_consecutive_unsets": true,
+        "concat_space": {
+            "spacing": "one"
+        },
+        "curly_braces_position":{
+            "classes_opening_brace": "next_line_unless_newline_at_signature_end"
+        },
+        "declare_strict_types": false,
+        "function_declaration": {
+            "closure_fn_spacing": "none",
+            "closure_function_spacing": "one",
+            "trailing_comma_single_line": false
+        },
+        "list_syntax": {
+            "syntax": "short"
+        },
+        "magic_constant_casing": true,
+        "magic_method_casing": true,
+        "method_argument_space": {
+            "on_multiline": "ensure_fully_multiline",
+            "keep_multiple_spaces_after_comma": true
+        },
+        "method_chaining_indentation": true,
+        "multiline_comment_opening_closing": true,
+        "multiline_whitespace_before_semicolons": {
+            "strategy": "new_line_for_chained_calls"
+        },
+        "new_with_parentheses": {
+            "anonymous_class": true,
+            "named_class": true
+        },
+        "no_multiple_statements_per_line": true,
+        "not_operator_with_successor_space": false,
+        "no_trailing_whitespace": true,
+        "no_trailing_whitespace_in_comment": true,
+        "no_unused_imports": true,
+        "no_useless_else": true,
+        "no_whitespace_in_blank_line": true,
+        "single_blank_line_at_eof": true,
+        "single_line_after_imports": true,
+        "single_quote": {
+            "strings_containing_single_quote_chars": true
+        },
+        "single_space_around_construct": {
+            "constructs_contain_a_single_space": [
+                "yield_from"
+            ]
+        },
+        "single_trait_insert_per_statement": true,
+        "visibility_required": {
+            "elements": ["const","method","property"]
+        },
+        "trim_array_spaces": true,
+        "whitespace_after_comma_in_array": {
+            "ensure_single_space": true
+        }
+    }
 }
