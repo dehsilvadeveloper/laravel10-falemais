@@ -23,7 +23,7 @@ use App\Traits\Http\ApiResponses;
 class AuthController extends Controller
 {
     use ApiResponses;
-    
+
     public function __construct(private AuthServiceInterface $authService)
     {
     }
@@ -32,11 +32,11 @@ class AuthController extends Controller
      * Login
      *
      * This endpoint lets you login an API user, generating an access token for him.
-     * 
+     *
      * @responseField access_token string The access token that will be used to authenticate API requests.
      * @responseField token_type string The type of token generated.
      * @responseField expires_at string The date and time in which the token will expire.
-     * 
+     *
      * @response status=200 scenario=success {
      *      "data": {
      *          "access_token": "1|laravel10_falemaisUI8A7aHrlN0XCyKApJCfO2uzK9Gc4X8DWZtFJbCY4d735783",
@@ -44,19 +44,19 @@ class AuthController extends Controller
      *          "expires_at": "2024-02-01 12:27:37"
      *      }
      * }
-     * 
+     *
      * @response status=400 scenario="user with email provided not found" {
      *      "message": "Could not found a valid user with the email: test@test.com."
      * }
-     * 
+     *
      * @response status=400 scenario="password incorrect" {
      *      "message": "The password provided for this user is incorrect."
      * }
-     * 
+     *
      * @response status=500 scenario="unexpected error" {
      *      "message": "Internal Server Error."
      * }
-     * 
+     *
      */
     public function login(LoginRequest $request): JsonResponse
     {
@@ -89,7 +89,7 @@ class AuthController extends Controller
             $exceptionTypes = [InvalidUserException::class, IncorrectPasswordException::class];
 
             $errorMessage = in_array(get_class($exception), $exceptionTypes)
-                ? $exception->getMessage() 
+                ? $exception->getMessage()
                 : 'An error has occurred. Could not login with the credentials provided as requested.';
 
             return $this->sendErrorResponse(
@@ -103,14 +103,14 @@ class AuthController extends Controller
      * Authenticated user
      *
      * This endpoint lets you get information about the authenticated user.
-     * 
+     *
      * @responseField id integer The identifier of the user.
      * @responseField name string The name of the user.
      * @responseField email string The e-mail of the user.
      * @responseField email_verified_at string The date and time in which the e-mail of the user was verified.
      * @responseField created_at string The date and time in which the user was created.
      * @responseField updated_at string The date and time in which the user was last updated.
-     * 
+     *
      * @response status=200 scenario=success {
      *      "data": {
      *          "id": 1,
@@ -121,13 +121,13 @@ class AuthController extends Controller
      *          "updated_at": "2024-04-02T20:06:26.000000Z"
      *      }
      * }
-     * 
+     *
      * @response status=500 scenario="unexpected error" {
      *      "message": "Internal Server Error."
      * }
-     * 
+     *
      * @authenticated
-     * 
+     *
      */
     public function me(Request $request): JsonResponse
     {

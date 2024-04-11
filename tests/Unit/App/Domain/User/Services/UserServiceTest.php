@@ -33,7 +33,7 @@ class UserServiceTest extends TestCase
     {
         $generatedRecord = User::factory()->make();
         $generatedRecord->id = 1;
-        
+
         $this->repositoryMock
             ->shouldReceive('firstById')
             ->once()
@@ -79,7 +79,7 @@ class UserServiceTest extends TestCase
     {
         $generatedRecord = User::factory()->make();
         $generatedRecord->id = 1;
-        
+
         $this->repositoryMock
             ->shouldReceive('firstByField')
             ->once()

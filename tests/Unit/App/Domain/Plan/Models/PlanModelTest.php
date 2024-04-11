@@ -14,11 +14,11 @@ class PlanModelTest extends ModelTestCase
     public function test_has_valid_configuration(): void
     {
         $dto = ModelConfigurationAssertionParamsDto::from([
-            'model'=> new Plan(),
+            'model' => new Plan(),
             'fillable' => ['name', 'max_free_minutes'],
             'table' => 'plans'
         ]);
-        
+
         $this->runConfigurationAssertions($dto);
     }
 }

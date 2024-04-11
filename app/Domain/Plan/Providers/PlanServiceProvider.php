@@ -10,7 +10,7 @@ class PlanServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     * 
+     *
      * @return void
      */
     public function register(): void
@@ -20,7 +20,7 @@ class PlanServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     * 
+     *
      * @return void
      */
     public function boot(): void
@@ -29,7 +29,7 @@ class PlanServiceProvider extends ServiceProvider
 
     /**
      * Bind repository classes for domain Plan
-     * 
+     *
      * @return void
      */
     private function bindServiceClasses(): void

@@ -19,7 +19,7 @@ use App\Traits\Http\ApiResponses;
 class FareController extends Controller
 {
     use ApiResponses;
-    
+
     public function __construct(private FareServiceInterface $fareService)
     {
     }
@@ -28,12 +28,12 @@ class FareController extends Controller
      * List fares
      *
      * This endpoint lets you get a list of fares.
-     * 
+     *
      * @responseField id integer The identifier of the fare.
      * @responseField ddd_origin string The DDD for the origin of the call.
      * @responseField ddd_destination string The DDD for the destination of the call.
      * @responseField price_per_minute integer The price per minute of the call.
-     * 
+     *
      * @response status=200 scenario=success {
      *      "data": [
      *          {
@@ -56,15 +56,15 @@ class FareController extends Controller
      *          },
      *      ]
      * }
-     * 
+     *
      * @response status=401 scenario="unauthenticated" {
      *      "message": "Unauthenticated."
      * }
-     * 
+     *
      * @response status=500 scenario="unexpected error" {
      *      "message": "Internal Server Error."
      * }
-     * 
+     *
      * @authenticated
      */
     public function getAll(): JsonResponse
@@ -85,7 +85,7 @@ class FareController extends Controller
                     'stack_trace' => $exception->getTrace()
                 ]
             );
-            
+
             return $this->sendErrorResponse(
                 message: 'An error has occurred. Could not get the fares list as requested.',
                 code: $exception->getCode()

@@ -4,7 +4,6 @@ namespace Tests\Unit\App\Domain\Auth\DataTransferObjects;
 
 use Tests\TestCase;
 use Spatie\LaravelData\Exceptions\CannotCreateData;
-use TypeError;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Domain\Auth\DataTransferObjects\SuccessfulAuthDto;

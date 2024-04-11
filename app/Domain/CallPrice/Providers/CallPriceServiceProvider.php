@@ -10,7 +10,7 @@ class CallPriceServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     * 
+     *
      * @return void
      */
     public function register(): void
@@ -20,7 +20,7 @@ class CallPriceServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     * 
+     *
      * @return void
      */
     public function boot(): void
@@ -29,7 +29,7 @@ class CallPriceServiceProvider extends ServiceProvider
 
     /**
      * Bind repository classes for domain Call Price
-     * 
+     *
      * @return void
      */
     private function bindServiceClasses(): void

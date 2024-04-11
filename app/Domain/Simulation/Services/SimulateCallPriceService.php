@@ -61,7 +61,7 @@ class SimulateCallPriceService implements SimulateCallPriceServiceInterface
     private function getFare(DddObject $dddOrigin, DddObject $dddDestination): Fare
     {
         $fare = $this->fareService->firstWhere([
-            'ddd_origin' => $dddOrigin->value(), 
+            'ddd_origin' => $dddOrigin->value(),
             'ddd_destination' => $dddDestination->value()
         ]);
 
@@ -93,7 +93,7 @@ class SimulateCallPriceService implements SimulateCallPriceServiceInterface
     {
         return $this->calculateCallPriceService->calculateWithPlan(
             CallPriceCalculationDto::from([
-                'call_minutes'=> $dto->callMinutes, 
+                'call_minutes' => $dto->callMinutes,
                 'fare_price_per_minute' => $fare->price_per_minute,
                 'plan_max_free_minutes' => $plan->max_free_minutes
             ])
@@ -104,7 +104,7 @@ class SimulateCallPriceService implements SimulateCallPriceServiceInterface
     {
         return $this->calculateCallPriceService->calculateWithoutPlan(
             CallPriceCalculationDto::from([
-                'call_minutes'=> $dto->callMinutes, 
+                'call_minutes' => $dto->callMinutes,
                 'fare_price_per_minute' => $fare->price_per_minute
             ])
         );

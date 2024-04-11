@@ -14,7 +14,7 @@ class UserModelTest extends ModelTestCase
     public function test_has_valid_configuration(): void
     {
         $dto = ModelConfigurationAssertionParamsDto::from([
-            'model'=> new User(),
+            'model' => new User(),
             'fillable' => ['name', 'email', 'password'],
             'hidden' => ['password', 'remember_token'],
             'casts' => [
@@ -24,7 +24,7 @@ class UserModelTest extends ModelTestCase
             ],
             'table' => 'users'
         ]);
-        
+
         $this->runConfigurationAssertions($dto);
     }
 }

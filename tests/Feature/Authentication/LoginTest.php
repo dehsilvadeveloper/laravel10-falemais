@@ -33,7 +33,7 @@ class LoginTest extends TestCase
                 'expires_at'
             ]
         ]);
-        
+
         $this->assertNotEmpty($response['data']['access_token']);
         $this->assertNotEmpty($response['data']['token_type']);
         $this->assertNotEmpty($response['data']['expires_at']);

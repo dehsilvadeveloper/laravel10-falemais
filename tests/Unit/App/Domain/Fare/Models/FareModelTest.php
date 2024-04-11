@@ -14,12 +14,12 @@ class FareModelTest extends ModelTestCase
     public function test_has_valid_configuration(): void
     {
         $dto = ModelConfigurationAssertionParamsDto::from([
-            'model'=> new Fare(),
+            'model' => new Fare(),
             'fillable' => ['ddd_origin', 'ddd_destination', 'price_per_minute'],
             'casts' => ['id' => 'int', 'price_per_minute' => 'float'],
             'table' => 'fares'
         ]);
-        
+
         $this->runConfigurationAssertions($dto);
     }
 }
