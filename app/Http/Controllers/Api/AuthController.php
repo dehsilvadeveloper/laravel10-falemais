@@ -13,6 +13,7 @@ use App\Domain\Auth\Exceptions\InvalidUserException;
 use App\Domain\Auth\Services\Interfaces\AuthServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginRequest;
+use App\Http\Resources\AuthenticatedUserResource;
 use App\Traits\Http\ApiResponses;
 
 /**
@@ -131,9 +132,8 @@ class AuthController extends Controller
      */
     public function me(Request $request): JsonResponse
     {
-        return $this->sendSuccessResponse(
-            data: $request->user(),
-            code: Response::HTTP_OK
-        );
+        return (new AuthenticatedUserResource($request->user()))
+                ->response()
+                ->setStatusCode(Response::HTTP_OK);
     }
 }
