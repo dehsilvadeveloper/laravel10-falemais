@@ -66,7 +66,7 @@ class LoginRequestTest extends TestCase
         $this->assertEquals(
             $expectedMessages,
             $validator->errors()->get('email')
-        ); 
+        );
     }
 
     /**
@@ -124,7 +124,7 @@ class LoginRequestTest extends TestCase
         $this->assertEquals(
             $expectedMessages,
             $validator->errors()->get('email')
-        ); 
+        );
     }
 
     /**
@@ -152,7 +152,7 @@ class LoginRequestTest extends TestCase
         $this->assertEquals(
             $expectedMessages,
             $validator->errors()->get('email')
-        ); 
+        );
     }
 
     /**

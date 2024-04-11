@@ -21,7 +21,7 @@ class PlanSeeder extends Seeder
         DB::beginTransaction();
 
         $plans->map(
-            fn ($value) => Plan::updateOrCreate(
+            fn($value) => Plan::updateOrCreate(
                 ['id' => $value['id']],
                 $value
             )

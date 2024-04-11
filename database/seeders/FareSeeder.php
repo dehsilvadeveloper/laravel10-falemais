@@ -21,7 +21,7 @@ class FareSeeder extends Seeder
         DB::beginTransaction();
 
         $plans->map(
-            fn ($value) => Fare::updateOrCreate(
+            fn($value) => Fare::updateOrCreate(
                 ['id' => $value['id']],
                 $value
             )

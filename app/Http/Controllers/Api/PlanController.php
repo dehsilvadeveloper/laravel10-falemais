@@ -19,7 +19,7 @@ use App\Traits\Http\ApiResponses;
 class PlanController extends Controller
 {
     use ApiResponses;
-    
+
     public function __construct(private PlanServiceInterface $planService)
     {
     }
@@ -28,11 +28,11 @@ class PlanController extends Controller
      * List plans
      *
      * This endpoint lets you get a list of plans.
-     * 
+     *
      * @responseField id integer The identifier of the plan.
      * @responseField name string The name of the plan.
      * @responseField max_free_minutes integer The total free minutes to which the customer using the plan is entitled.
-     * 
+     *
      * @response status=200 scenario=success {
      *      "data": [
      *          {
@@ -52,15 +52,15 @@ class PlanController extends Controller
      *          }
      *      ]
      * }
-     * 
+     *
      * @response status=401 scenario="unauthenticated" {
      *      "message": "Unauthenticated."
      * }
-     * 
+     *
      * @response status=500 scenario="unexpected error" {
      *      "message": "Internal Server Error."
      * }
-     * 
+     *
      * @authenticated
      */
     public function getAll(): JsonResponse
@@ -81,7 +81,7 @@ class PlanController extends Controller
                     'stack_trace' => $exception->getTrace()
                 ]
             );
-            
+
             return $this->sendErrorResponse(
                 message: 'An error has occurred. Could not get the plans list as requested.',
                 code: $exception->getCode()

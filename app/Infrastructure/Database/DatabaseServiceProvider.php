@@ -16,7 +16,7 @@ class DatabaseServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     * 
+     *
      * @return void
      */
     public function register(): void
@@ -29,7 +29,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     * 
+     *
      * @return void
      */
     public function boot(): void
@@ -38,7 +38,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
     /**
      * Bind base repository classes
-     * 
+     *
      * @return void
      */
     private function bindBaseRepositoryClasses(): void
@@ -48,7 +48,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
     /**
      * Bind repository classes for domain Plan
-     * 
+     *
      * @return void
      */
     private function bindPlanRepositoryClasses(): void
@@ -58,7 +58,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
     /**
      * Bind repository classes for domain Fare
-     * 
+     *
      * @return void
      */
     private function bindFareRepositoryClasses(): void
@@ -68,7 +68,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
     /**
      * Bind repository classes for domain User
-     * 
+     *
      * @return void
      */
     private function bindUserRepositoryClasses(): void

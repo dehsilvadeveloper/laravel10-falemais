@@ -15,12 +15,12 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
     {
         try {
             $dataArray = $dto->toArray();
-            list(
-                'call_minutes'=> $callMinutes, 
-                'exceeding_fee_percentage' => $exceedingFeePercentage, 
+            [
+                'call_minutes' => $callMinutes,
+                'exceeding_fee_percentage' => $exceedingFeePercentage,
                 'fare_price_per_minute' => $farePricePerMinute,
                 'plan_max_free_minutes' => $planMaxFreeMinutes
-            ) = $dataArray;
+            ] = $dataArray;
 
             if (!$planMaxFreeMinutes) {
                 throw new InvalidPlanMaxFreeMinutesException(
@@ -42,7 +42,7 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
                     'data' => [
-                        'call_minutes'=> $callMinutes ?? null,
+                        'call_minutes' => $callMinutes ?? null,
                         'exceeding_fee_percentage' => $exceedingFeePercentage ?? null,
                         'fare_price_per_minute' => $farePricePerMinute ?? null,
                         'plan_max_free_minutes' => $planMaxFreeMinutes ?? null
@@ -59,7 +59,7 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
     {
         try {
             $dataArray = $dto->toArray();
-            list('call_minutes' => $callMinutes, 'fare_price_per_minute' => $farePricePerMinute) = $dataArray;
+            ['call_minutes' => $callMinutes, 'fare_price_per_minute' => $farePricePerMinute] = $dataArray;
 
             return $callMinutes * $farePricePerMinute;
         } catch (Throwable $exception) {
@@ -70,7 +70,7 @@ class CalculateCallPriceService implements CalculateCallPriceServiceInterface
                     'file' => $exception->getFile(),
                     'line' => $exception->getLine(),
                     'data' => [
-                        'call_minutes'=> $callMinutes ?? null,
+                        'call_minutes' => $callMinutes ?? null,
                         'fare_price_per_minute' => $farePricePerMinute ?? null
                     ],
                     'stack_trace' => $exception->getTrace()

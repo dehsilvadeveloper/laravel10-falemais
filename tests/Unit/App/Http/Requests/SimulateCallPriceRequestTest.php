@@ -234,7 +234,7 @@ class SimulateCallPriceRequestTest extends TestCase
      * @group requests
      * @group simulation
      */
-    public function test_fail_with_invalid_type_call_minutes(): void 
+    public function test_fail_with_invalid_type_call_minutes(): void
     {
         $data = [
             'ddd_origin' => '011',

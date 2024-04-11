@@ -61,7 +61,7 @@ class SimulateCallPriceServiceTest extends TestCase
             ->shouldReceive('firstWhere')
             ->once()
             ->with([
-                'ddd_origin' => $dto->dddOrigin->value(), 
+                'ddd_origin' => $dto->dddOrigin->value(),
                 'ddd_destination' => $dto->dddDestination->value()
             ])
             ->andReturn(
@@ -113,7 +113,7 @@ class SimulateCallPriceServiceTest extends TestCase
             ->shouldReceive('firstWhere')
             ->once()
             ->with([
-                'ddd_origin' => $dto->dddOrigin->value(), 
+                'ddd_origin' => $dto->dddOrigin->value(),
                 'ddd_destination' => $dto->dddDestination->value()
             ])
             ->andReturn(null);
@@ -144,7 +144,7 @@ class SimulateCallPriceServiceTest extends TestCase
             ->shouldReceive('firstWhere')
             ->once()
             ->with([
-                'ddd_origin' => $dto->dddOrigin->value(), 
+                'ddd_origin' => $dto->dddOrigin->value(),
                 'ddd_destination' => $dto->dddDestination->value()
             ])
             ->andReturn(

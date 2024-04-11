@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         DB::beginTransaction();
 
         $plans->map(
-            fn ($value) => User::updateOrCreate(
+            fn($value) => User::updateOrCreate(
                 ['id' => $value['id']],
                 $value
             )

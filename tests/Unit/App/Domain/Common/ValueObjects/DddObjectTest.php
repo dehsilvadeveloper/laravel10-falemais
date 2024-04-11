@@ -24,7 +24,7 @@ class DddObjectTest extends TestCase
     public function test_cannot_create_from_invalid_length_ddd(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        
+
         new DddObject('12');
     }
 

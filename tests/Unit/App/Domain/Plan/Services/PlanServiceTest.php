@@ -103,7 +103,7 @@ class PlanServiceTest extends TestCase
     {
         $generatedRecord = Plan::factory()->make();
         $generatedRecord->id = 1;
-        
+
         $this->repositoryMock
             ->shouldReceive('firstById')
             ->once()
