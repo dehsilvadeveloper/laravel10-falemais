@@ -43,7 +43,7 @@
         "method_chaining_indentation": true,
         "multiline_comment_opening_closing": true,
         "multiline_whitespace_before_semicolons": {
-            "strategy": "new_line_for_chained_calls"
+            "strategy": "no_multi_line"
         },
         "new_with_parentheses": {
             "anonymous_class": true,
@@ -57,6 +57,9 @@
         "no_useless_else": true,
         "no_whitespace_in_blank_line": true,
         "single_blank_line_at_eof": true,
+        "single_import_per_statement": {
+            "group_to_single_imports": false
+        },
         "single_line_after_imports": true,
         "single_quote": {
             "strings_containing_single_quote_chars": true
