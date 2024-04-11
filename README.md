@@ -8,8 +8,6 @@
 
 # Challenge FaleMais (Laravel 10 version)
 
-*WORK IN PROGRESS*
-
 ## Challenge description
 
 **English**
