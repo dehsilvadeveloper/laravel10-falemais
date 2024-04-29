@@ -50,6 +50,7 @@ tmp/*
 
 # Docker
 .docker/mysql/dbdata/*
+!.docker/mysql/dbdata/.gitkeep 
 
 # Homestead
 Homestead.json
