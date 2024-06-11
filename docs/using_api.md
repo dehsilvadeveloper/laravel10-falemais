@@ -1,6 +1,6 @@
 ## Using the API
 
-### Testing the API enpoints
+### Testing the API endpoints
 
 To test the API endpoints you will need a program that can perform http requests. You can use **Postman** or **Insomnia**, for example.
 
